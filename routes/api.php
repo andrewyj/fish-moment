@@ -13,10 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 Route::group(["prefix" => "v1"], function () {
-    Route::group(['middleware' => ['token.canrefresh']], function() {
-    
+    Route::group(['middleware' => ['auth:api']], function() {
+        Route::get('/user', 'UserController@user');
     });
-    Route::get('/user', 'UserController@user');
+    Route::post('/user', 'UserController@login');
 });
 
 

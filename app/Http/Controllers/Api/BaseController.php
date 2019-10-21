@@ -22,7 +22,7 @@ class BaseController extends Controller
      *   type="apiKey",
      *   in="header",
      *   description = "认证token",
-     *   name="token"
+     *   name="Authorization"
      * ),
      * )
      */
@@ -30,4 +30,5 @@ class BaseController extends Controller
     {
 //        $this->middleware("auth:api")->only(['logout']);
     }
+
 }
