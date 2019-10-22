@@ -1,0 +1,166 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "app",
+        "version": "1.0.0"
+    },
+    "host": "",
+    "basePath": "/api/v1",
+    "paths": {
+        "/user": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "user",
+                "description": "user",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7ed3\u679c\u96c6",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "\u7528\u6237id",
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "description": "\u7528\u6237\u540d",
+                                            "type": "string"
+                                        },
+                                        "nickname": {
+                                            "description": "\u7528\u6237\u6635\u79f0",
+                                            "type": "string"
+                                        },
+                                        "avatar": {
+                                            "description": "\u5934\u50cf",
+                                            "type": "string"
+                                        },
+                                        "phone": {
+                                            "description": "\u7535\u8bdd",
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "description": "\u521b\u5efa\u65f6\u95f4",
+                                            "type": "string"
+                                        },
+                                        "updated_at": {
+                                            "description": "\u66f4\u65b0\u65f6\u95f4",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "\u624b\u673a\uff0c\u5bc6\u7801\u767b\u5f55",
+                "description": "\u624b\u673a\u5bc6\u7801\u767b\u5f55",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "data",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "phone": {
+                                    "description": "\u7535\u8bdd",
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "description": "\u5bc6\u7801",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8fd4\u56de\u7ed3\u679c",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "properties": {
+                                        "token": {
+                                            "description": "token",
+                                            "type": "string"
+                                        },
+                                        "expires_in": {
+                                            "description": "\u8fc7\u671f\u65f6\u95f4",
+                                            "type": "string"
+                                        },
+                                        "token_type": {
+                                            "description": "token\u7c7b\u578b",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {},
+    "securityDefinitions": {
+        "api_key": {
+            "type": "apiKey",
+            "description": "\u8ba4\u8bc1token",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
