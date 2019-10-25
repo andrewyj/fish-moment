@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->default("")->comment('头像地址');
             $table->string('oauth_id')->default("")->comment('第三方登录验证id')->unique();
             $table->string('unionid')->default("")->comment('unionid');
-            $table->text('token')->default('')->comment('登录token');
+            $table->text('token')->nullable()->comment('登录token');
             $table->string('password')->default('')->comment('密码');
             $table->tinyInteger('sex')->default(0)->comment('性别 0：未知 1：男 2：女');
             $table->tinyInteger('age')->default(18)->comment('年龄');
