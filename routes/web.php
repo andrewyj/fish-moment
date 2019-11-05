@@ -17,3 +17,6 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('static.index.index');
 });
+Route::get('/map', function () {
+    return view('static.map.index');
+});

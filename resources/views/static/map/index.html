@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/map/jquery-3.4.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/map/touch-0.2.14.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			html,body{
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+		    #imgView{
+				width: 1006px;
+				height: 1420px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				background-image: url(img/map/img.jpg);
+				background-size: 100% 100%;
+			}
+			#dx{
+				width: 79px;
+				    height: 36px;
+				    position: absolute;
+				    left: 565px;
+				    top: 228px;
+			}
+		    </style>
+		
+	</head>
+	
+	<body>
+		<div id="imgView">
+			<div id="dx" onclick="pageTo('http://www.baidu.com')">
+				
+			</div>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		pageTo = function(e){
+			location.href = e
+		}
+	</script>
+</html>
