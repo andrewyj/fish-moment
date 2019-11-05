@@ -15,6 +15,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "socialiteproviders/weixin": "^4.0",
         "tymon/jwt-auth": "1.0.0-rc.4.1",
         "zircote/swagger-php": "2.*"
     },
@@ -43,6 +44,9 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+        "files": [
+            "bootstrap/helpers.php"
         ]
     },
     "autoload-dev": {

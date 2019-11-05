@@ -59,7 +59,7 @@ class UserController extends AdminController
         $show->field('avatar', '头像')->image();
         $show->field('token', __('Token'));
         $show->field('sex', '性别')->as(function ($sex){
-            return User::sexMaps()[$sex] ?? '未知';
+            return User::genderMaps()[$sex] ?? '未知';
         });
         $show->field('age', '年龄');
         $show->field('identifier', '身份标识符');
@@ -84,7 +84,7 @@ class UserController extends AdminController
         $form->text('nickname', '昵称');
         $form->image('avatar', '头像');
         $form->textarea('token', '登录token');
-        $form->radio('sex', '性别')->options(User::sexMaps());
+        $form->radio('sex', '性别')->options(User::genderMaps());
         $form->number('age', '年龄')->default(18);
         $form->text('identifier', '身份标识符')->default('18');
 

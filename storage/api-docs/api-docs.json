@@ -12,7 +12,7 @@
                 "tags": [
                     "user"
                 ],
-                "summary": "user",
+                "summary": "\u7528\u6237\u4fe1\u606f",
                 "description": "user",
                 "produces": [
                     "application/json"
@@ -40,16 +40,58 @@
                                             "description": "\u7528\u6237\u540d",
                                             "type": "string"
                                         },
+                                        "phone": {
+                                            "description": "\u7535\u8bdd",
+                                            "type": "string"
+                                        },
+                                        "school_id": {
+                                            "description": "\u5b66\u6821id",
+                                            "type": "integer"
+                                        },
+                                        "gender": {
+                                            "description": "\u6027\u522b 1\uff1a\u7537 2\uff1a\u5973",
+                                            "type": "integer"
+                                        },
+                                        "introduction": {
+                                            "description": "\u7b80\u4ecb",
+                                            "type": "string"
+                                        },
+                                        "age": {
+                                            "description": "\u5e74\u9f84",
+                                            "type": "integer"
+                                        },
+                                        "photos": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "integral": {
+                                            "description": "\u79ef\u5206\u6570",
+                                            "type": "integer"
+                                        },
+                                        "identifier": {
+                                            "description": "\u8eab\u4efd\u6807\u8bc6\u7b26",
+                                            "type": "string"
+                                        },
+                                        "invitation_count": {
+                                            "description": "\u9080\u8bf7\u7528\u6237\u6570",
+                                            "type": "integer"
+                                        },
+                                        "follow": {
+                                            "description": "\u5173\u6ce8\u4eba\u6570",
+                                            "type": "integer"
+                                        },
+                                        "follower": {
+                                            "description": "\u88ab\u5173\u6ce8\u4eba\u6570",
+                                            "type": "integer"
+                                        },
                                         "nickname": {
                                             "description": "\u7528\u6237\u6635\u79f0",
                                             "type": "string"
                                         },
                                         "avatar": {
                                             "description": "\u5934\u50cf",
-                                            "type": "string"
-                                        },
-                                        "phone": {
-                                            "description": "\u7535\u8bdd",
                                             "type": "string"
                                         },
                                         "created_at": {
@@ -59,6 +101,23 @@
                                         "updated_at": {
                                             "description": "\u66f4\u65b0\u65f6\u95f4",
                                             "type": "string"
+                                        },
+                                        "school": {
+                                            "properties": {
+                                                "id": {
+                                                    "description": "\u5b66\u6821id",
+                                                    "type": "integer"
+                                                },
+                                                "name": {
+                                                    "description": "\u5b66\u6821\u540d\u79f0",
+                                                    "type": "string"
+                                                },
+                                                "initial": {
+                                                    "description": "\u9996\u5b57\u6bcd",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
                                         }
                                     },
                                     "type": "object"
@@ -75,7 +134,9 @@
                         ]
                     }
                 ]
-            },
+            }
+        },
+        "/login": {
             "post": {
                 "tags": [
                     "user"
@@ -134,6 +195,112 @@
                                         },
                                         "token_type": {
                                             "description": "token\u7c7b\u578b",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/logout": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "\u9000\u51fa\u767b\u5f55",
+                "description": "\u9000\u51fa\u767b\u5f55",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8fd4\u56de\u7ed3\u679c",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/userThirdAuth/wx": {
+            "post": {
+                "tags": [
+                    "userThirdAuth"
+                ],
+                "summary": "\u5fae\u4fe1\u767b\u5f55",
+                "description": "\u5fae\u4fe1\u767b\u5f55",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "data",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u5fae\u4fe1\u6388\u6743\u7801",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8fd4\u56de\u7ed3\u679c",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "properties": {
+                                        "token": {
+                                            "description": "\u767b\u5f55token",
                                             "type": "string"
                                         }
                                     },

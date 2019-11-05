@@ -15,8 +15,10 @@ use Illuminate\Http\Request;
 Route::group(["prefix" => "v1"], function () {
     Route::group(['middleware' => ['auth:api']], function() {
         Route::get('/user', 'UserController@user');
+        Route::post('/logout', 'UserController@login');
     });
-    Route::post('/user', 'UserController@login');
+    Route::post('/login', 'UserController@login');
+    Route::post("userThirdAuth/wx", 'UserThirdAuthController@wxStore');
 });
 
 
