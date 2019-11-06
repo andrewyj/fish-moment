@@ -12,9 +12,6 @@
 */
 
 Route::get('/', function () {
-    return view('static.product.index');
-});
-Route::get('/about', function () {
     return view('static.index.index');
 });
 Route::get('/map', function () {
