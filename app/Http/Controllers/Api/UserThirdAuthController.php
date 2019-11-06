@@ -19,8 +19,8 @@ class UserThirdAuthController extends BaseController {
         $tmpStr = implode( $tmpArr );
         $tmpStr = sha1( $tmpStr );
     
+        return request()->get('echostr');
         if( $tmpStr == $signature ){
-            return request()->get('echostr');
         }else{
             return 0;
         }
