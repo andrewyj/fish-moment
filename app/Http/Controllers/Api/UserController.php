@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Resources\SchoolCollection;
-use App\Http\Resources\UserCollection;
+use App\Http\Resources\SchoolResource;
+use App\Http\Resources\UserResource;
 use \App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,8 +59,8 @@ class UserController extends BaseController
      */
     public function user() {
         $userModel = Auth::guard()->user();
-        $user = new UserCollection($userModel);
-        $user['school'] = new SchoolCollection($userModel->school);
+        $user = new UserResource($userModel);
+        $user['school'] = new SchoolResource($userModel->school);
         
         return $this->responseData($user);
     }

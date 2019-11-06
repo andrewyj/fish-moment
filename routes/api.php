@@ -14,12 +14,21 @@ use Illuminate\Http\Request;
 */
 Route::group(["prefix" => "v1"], function () {
     Route::group(['middleware' => ['auth:api']], function() {
+        
+        //user
         Route::get('/user', 'UserController@user');
         Route::post('/logout', 'UserController@login');
         Route::post('/user', 'UserController@modify');
+        
+        //social pool
+        Route::post("/social-pool/join/{socialPool}", 'SocialPoolController@join');
+        Route::post("/social-pool/quit/{socialPool}", 'SocialPoolController@quit');
+        Route::post("/social-pool", 'SocialPoolController@store');
+        Route::patch("/social-pool/{socialPool}", 'SocialPoolController@update');
     });
     Route::post('/login', 'UserController@login');
-    Route::post("userThirdAuth/wx", 'UserThirdAuthController@wxStore');
+    Route::post("user-third-auth/wx", 'UserThirdAuthController@wxStore');
+    Route::get('/wx-check', 'UserThirdAuthController@wxCheck');
 });
 
 

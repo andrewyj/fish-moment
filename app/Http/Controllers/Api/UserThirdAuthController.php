@@ -8,9 +8,27 @@ use Illuminate\Support\Facades\DB;
 
 class UserThirdAuthController extends BaseController {
     
+    public function wxCheck() {
+        $signature = request()->get('signature');
+        $timestamp = request()->get('timestamp');
+        $nonce     = request()->get('nonce');
+    
+        $token  = env('WECHAT_TOKEN');
+        $tmpArr = [$token, $timestamp, $nonce];
+        sort($tmpArr, SORT_STRING);
+        $tmpStr = implode( $tmpArr );
+        $tmpStr = sha1( $tmpStr );
+    
+        if( $tmpStr == $signature ){
+            return request()->get('echostr');
+        }else{
+            return 0;
+        }
+    }
+    
     /**
      * @SWG\Post(
-     *     path="/userThirdAuth/wx",
+     *     path="/user-third-auth/wx",
      *     summary="微信登录",
      *     tags={"userThirdAuth"},
      *     description="微信登录",

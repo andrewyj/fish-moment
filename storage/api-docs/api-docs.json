@@ -7,6 +7,251 @@
     "host": "",
     "basePath": "/api/v1",
     "paths": {
+        "/social-pool/join/{socialPool}": {
+            "post": {
+                "tags": [
+                    "social-pool"
+                ],
+                "summary": "\u52a0\u5165\u5708\u5b50",
+                "description": "\u52a0\u5165\u5708\u5b50",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "socialPool",
+                        "in": "path",
+                        "description": "\u5708\u5b50id",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7ed3\u679c\u96c6",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/social-pool/quit/{socialPool}": {
+            "post": {
+                "tags": [
+                    "social-pool"
+                ],
+                "summary": "\u9000\u51fa\u5708\u5b50",
+                "description": "\u9000\u51fa\u5708\u5b50",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "socialPool",
+                        "in": "path",
+                        "description": "\u5708\u5b50id",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7ed3\u679c\u96c6",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/social-pool": {
+            "post": {
+                "tags": [
+                    "social-pool"
+                ],
+                "summary": "\u521b\u5efa\u5708\u5b50",
+                "description": "\u521b\u5efa\u5708\u5b50",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "data",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "description": "\u540d\u79f0\uff0c\u5fc5\u586b",
+                                    "type": "string"
+                                },
+                                "school_id": {
+                                    "description": "\u5b66\u6821id\uff0c\u5fc5\u586b",
+                                    "type": "integer"
+                                },
+                                "avatar": {
+                                    "description": "\u5934\u50cf\u5730\u5740",
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "description": "\u63cf\u8ff0",
+                                    "type": "string"
+                                },
+                                "introduction": {
+                                    "description": "\u7b80\u4ecb",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8fd4\u56de\u7ed3\u679c",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/social-pool/{socialPool}": {
+            "patch": {
+                "tags": [
+                    "social-pool"
+                ],
+                "summary": "\u4fee\u6539\u5708\u5b50",
+                "description": "\u4fee\u6539\u5708\u5b50",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "socialPool",
+                        "in": "path",
+                        "description": "\u5708\u5b50id",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "data",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "description": "\u540d\u79f0",
+                                    "type": "string"
+                                },
+                                "school_id": {
+                                    "description": "\u5b66\u6821id",
+                                    "type": "integer"
+                                },
+                                "avatar": {
+                                    "description": "\u5934\u50cf\u5730\u5740",
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "description": "\u63cf\u8ff0",
+                                    "type": "string"
+                                },
+                                "introduction": {
+                                    "description": "\u7b80\u4ecb",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8fd4\u56de\u7ed3\u679c",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        },
         "/user": {
             "get": {
                 "tags": [
