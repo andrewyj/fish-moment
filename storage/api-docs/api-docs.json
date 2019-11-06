@@ -134,6 +134,73 @@
                         ]
                     }
                 ]
+            },
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "\u7528\u6237\u4fe1\u606f\u4fee\u6539",
+                "description": "\u7528\u6237\u4fe1\u606f\u4fee\u6539",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "data",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "avatar": {
+                                    "description": "\u5934\u50cf",
+                                    "type": "string"
+                                },
+                                "nickname": {
+                                    "description": "\u6635\u79f0",
+                                    "type": "string"
+                                },
+                                "introduction": {
+                                    "description": "\u7b80\u4ecb",
+                                    "type": "string"
+                                },
+                                "gender": {
+                                    "description": "\u6027\u522b 1\uff1a\u7537 2\uff1a\u5973",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u8fd4\u56de\u7ed3\u679c",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
             }
         },
         "/login": {

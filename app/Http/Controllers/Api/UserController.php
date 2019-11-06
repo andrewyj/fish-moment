@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Resources\School;
-use App\Http\Resources\User;
+use App\Http\Resources\SchoolCollection;
+use App\Http\Resources\UserCollection;
+use \App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -58,10 +59,74 @@ class UserController extends BaseController
      */
     public function user() {
         $userModel = Auth::guard()->user();
-        $user = new User($userModel);
-        $user['school'] = new School($userModel->school);
+        $user = new UserCollection($userModel);
+        $user['school'] = new SchoolCollection($userModel->school);
         
         return $this->responseData($user);
+    }
+    
+    /**
+     * @SWG\Post(
+     *     path="/user",
+     *     summary="用户信息修改",
+     *     tags={"user"},
+     *     description="用户信息修改",
+     *     security={{"api_key": {"scope"}}},
+     *     consumes={"application/json"},
+     *     produces={"application/json"},
+     *      @SWG\Parameter(
+     *          in="body",
+     *          name="body",
+     *          description="data",
+     *          required=true,
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="avatar",
+     *                  type="string",
+     *                  description="头像",
+     *              ),
+     *              @SWG\Property(
+     *                  property="nickname",
+     *                  type="string",
+     *                  description="昵称",
+     *              ),
+     *              @SWG\Property(
+     *                  property="introduction",
+     *                  type="string",
+     *                  description="简介",
+     *              ),
+     *              @SWG\Property(
+     *                  property="gender",
+     *                  type="string",
+     *                  description="性别 1：男 2：女",
+     *              ),
+     *          ),
+     *      ),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="返回结果",
+     *         @SWG\Schema(
+     *             type="object",
+     *             @SWG\Property(property="code", type="integer", description="状态码"),
+     *             @SWG\Property(property="message", type="string", description="状态信息"),
+     *         )
+     *     )
+     * )
+     */
+    public function modify() {
+        $user   = request()->user();
+        $gender = request()->post('gender', 1);
+        if (!isset(User::genderMaps()[$gender])) {
+            return $this->responseNotFound('性别不存在');
+        }
+        $user->gender = $gender;
+        $user->avatar       = request()->post('avatar');
+        $user->introduction = request()->post('introduction');
+        $user->nickname     = request()->post('nickname');
+        $user->save();
+        
+        return $this->responseSuccess();
     }
     
     /**
