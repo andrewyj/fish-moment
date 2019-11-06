@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostLikersTable extends Migration
+class CreatePostHeartsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreatePostLikersTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_likers', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('user_id');
-            $table->bigInteger('post_id');
+        Schema::create('post_hearts', function (Blueprint $table) {
+            $table->bigInteger('user_id')->comment('用户id');
+            $table->bigInteger('post_id')->comment('文章id');
+            $table->tinyInteger('type')->default(1)->comment('类型：0：不喜欢 1：喜欢');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreatePostLikersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_likers');
+        Schema::dropIfExists('post_unlikers');
     }
 }

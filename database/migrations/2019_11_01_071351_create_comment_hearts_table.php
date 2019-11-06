@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommentLikersTable extends Migration
+class CreateCommentHeartsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateCommentLikersTable extends Migration
      */
     public function up()
     {
-        Schema::create('comment_likers', function (Blueprint $table) {
+        Schema::create('comment_hearts', function (Blueprint $table) {
             $table->bigInteger('user_id');
             $table->bigInteger('comment_id');
+            $table->tinyInteger('type')->default(1)->comment('类型：0：不喜欢 1：喜欢');
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

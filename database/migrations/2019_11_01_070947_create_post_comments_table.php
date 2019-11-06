@@ -19,7 +19,7 @@ class CreatePostCommentsTable extends Migration
             $table->bigInteger('parent_id')->default(0)->comment('回复评论的评论id');
             $table->bigInteger('post_id')->comment('推文id');
             $table->text('content')->comment('评论内容');
-            $table->bigInteger('like_times')->default(0)->comment('点赞次数');
+            $table->bigInteger('like_count')->default(0)->comment('点赞次数');
             $table->softDeletes();
             $table->timestamps();
         });

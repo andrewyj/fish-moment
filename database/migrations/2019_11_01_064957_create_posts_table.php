@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->longText('content')->comment('内容');
             $table->bigInteger('repost_times')->default(0)->comment('转发次数');
             $table->bigInteger('like_count')->default(0)->comment('喜欢次数');
-            $table->bigInteger('unlike_count')->default(0)->comment('不喜欢次数');
+            $table->bigInteger('dislike_count')->default(0)->comment('不喜欢次数');
             $table->bigInteger('comment_count')->default(0)->comment('评论次数');
             $table->softDeletes();
             $table->timestamps();
