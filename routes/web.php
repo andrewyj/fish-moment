@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('static.index.index');
+    return view('static.product.index');
 });
 Route::get('/map', function () {
     return view('static.map.index');
