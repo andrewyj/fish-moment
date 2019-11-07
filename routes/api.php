@@ -26,9 +26,14 @@ Route::group(["prefix" => "v1"], function () {
         Route::post("/social-pool", 'SocialPoolController@store');
         Route::patch("/social-pool/{socialPool}", 'SocialPoolController@update');
     });
+    
+    //user
     Route::post('/login', 'UserController@login');
     Route::post("user-third-auth/wx", 'UserThirdAuthController@wxStore');
     Route::get('/wx-check', 'UserThirdAuthController@wxCheck');
+    
+    Route::get('/social-pools', 'SocialPoolController@socialPools');
+    Route::get('/social-pool/{socialPool}', 'SocialPoolController@detail');
 });
 
 

@@ -7,6 +7,148 @@
     "host": "",
     "basePath": "/api/v1",
     "paths": {
+        "/social-pools": {
+            "get": {
+                "tags": [
+                    "social-pool"
+                ],
+                "summary": "\u5708\u5b50\u5217\u8868",
+                "description": "\u5708\u5b50\u5217\u8868",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7ed3\u679c\u96c6",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "description": "\u5708\u5b50id",
+                                                "type": "integer"
+                                            },
+                                            "user_id": {
+                                                "description": "\u521b\u5efa\u8005id",
+                                                "type": "integer"
+                                            },
+                                            "school_id": {
+                                                "description": "\u5b66\u6821id",
+                                                "type": "integer"
+                                            },
+                                            "avatar": {
+                                                "description": "\u5934\u50cf",
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "description": "\u540d\u79f0",
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "description": "\u63cf\u8ff0",
+                                                "type": "string"
+                                            },
+                                            "introduction": {
+                                                "description": "\u7b80\u4ecb",
+                                                "type": "string"
+                                            },
+                                            "user_count": {
+                                                "description": "\u52a0\u5165\u4eba\u6570",
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "description": "\u521b\u5efa\u65f6\u95f4",
+                                                "type": "string"
+                                            },
+                                            "updated_at": {
+                                                "description": "\u66f4\u65b0",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "links": {
+                                    "properties": {
+                                        "first": {
+                                            "description": "\u7b2c\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        },
+                                        "last": {
+                                            "description": "\u6700\u540e\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        },
+                                        "prev": {
+                                            "description": "\u524d\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        },
+                                        "next": {
+                                            "description": "\u540e\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "meta": {
+                                    "properties": {
+                                        "current_page": {
+                                            "description": "\u5f53\u524d\u9875",
+                                            "type": "integer"
+                                        },
+                                        "from": {
+                                            "description": "\u4ece\u7b2c\u51e0\u6761\u5f00\u59cb",
+                                            "type": "integer"
+                                        },
+                                        "to": {
+                                            "description": "\u5230\u7b2c\u51e0\u6761",
+                                            "type": "integer"
+                                        },
+                                        "last_page": {
+                                            "description": "\u6700\u540e\u4e00\u9875\u9875\u7801",
+                                            "type": "integer"
+                                        },
+                                        "path": {
+                                            "description": "\u8def\u5f84",
+                                            "type": "string"
+                                        },
+                                        "total": {
+                                            "description": "\u603b\u6761\u6570",
+                                            "type": "integer"
+                                        },
+                                        "per_page": {
+                                            "description": "\u6bcf\u9875\u663e\u793a\u6761\u6570",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        },
         "/social-pool/join/{socialPool}": {
             "post": {
                 "tags": [
@@ -173,6 +315,112 @@
             }
         },
         "/social-pool/{socialPool}": {
+            "get": {
+                "tags": [
+                    "social-pool"
+                ],
+                "summary": "\u5708\u5b50\u8be6\u60c5",
+                "description": "\u5708\u5b50\u8be6\u60c5",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "socialPool",
+                        "in": "path",
+                        "description": "\u5708\u5b50id",
+                        "required": false,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7ed3\u679c\u96c6",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "\u5708\u5b50",
+                                            "type": "integer"
+                                        },
+                                        "name": {
+                                            "description": "\u5708\u5b50\u540d",
+                                            "type": "string"
+                                        },
+                                        "user_id": {
+                                            "description": "\u521b\u5efa\u8005",
+                                            "type": "integer"
+                                        },
+                                        "school_id": {
+                                            "description": "\u5b66\u6821id",
+                                            "type": "integer"
+                                        },
+                                        "avatar": {
+                                            "description": "\u5934\u50cf",
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "description": "\u63cf\u8ff0",
+                                            "type": "string"
+                                        },
+                                        "introduction": {
+                                            "description": "\u7b80\u4ecb",
+                                            "type": "string"
+                                        },
+                                        "user_count": {
+                                            "description": "\u52a0\u5165\u7528\u6237\u6570",
+                                            "type": "integer"
+                                        },
+                                        "created_at": {
+                                            "description": "\u521b\u5efa\u65f6\u95f4",
+                                            "type": "string"
+                                        },
+                                        "updated_at": {
+                                            "description": "\u4fee\u6539\u65f6\u95f4",
+                                            "type": "string"
+                                        },
+                                        "links": {
+                                            "properties": {
+                                                "id": {
+                                                    "description": "\u5b66\u6821id",
+                                                    "type": "integer"
+                                                },
+                                                "name": {
+                                                    "description": "\u5b66\u6821\u540d\u79f0",
+                                                    "type": "string"
+                                                },
+                                                "initial": {
+                                                    "description": "\u9996\u5b57\u6bcd",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            },
             "patch": {
                 "tags": [
                     "social-pool"
@@ -566,7 +814,7 @@
                 ]
             }
         },
-        "/userThirdAuth/wx": {
+        "/user-third-auth/wx": {
             "post": {
                 "tags": [
                     "userThirdAuth"

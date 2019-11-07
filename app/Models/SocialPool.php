@@ -12,4 +12,8 @@ class SocialPool extends Model
     public function users() {
         return $this->belongsToMany(User::class, UserSocialPool::class);
     }
+    
+    public function school() {
+        return $this->belongsTo(School::class);
+    }
 }
