@@ -14,6 +14,15 @@
 Route::get('/', function () {
     return view('static.product.index');
 });
+Route::get('/WechatQR', function () {
+    return view('static.product.WechatQR');
+});
+Route::get('/yonghu', function () {
+    return view('static.product.yonghu');
+});
+Route::get('/yinsi', function () {
+    return view('static.product.yinsi');
+});
 Route::get('/map', function () {
     return view('static.map.index');
 });
