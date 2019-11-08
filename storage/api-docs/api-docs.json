@@ -814,6 +814,440 @@
                 ]
             }
         },
+        "/user/followings": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "\u5173\u6ce8\u7528\u6237\u5217\u8868",
+                "description": "\u5173\u6ce8\u7528\u6237\u5217\u8868",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7ed3\u679c\u96c6",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "description": "\u7528\u6237id",
+                                                "type": "integer"
+                                            },
+                                            "name": {
+                                                "description": "\u7528\u6237\u540d",
+                                                "type": "string"
+                                            },
+                                            "phone": {
+                                                "description": "\u7535\u8bdd",
+                                                "type": "string"
+                                            },
+                                            "school_id": {
+                                                "description": "\u5b66\u6821id",
+                                                "type": "integer"
+                                            },
+                                            "gender": {
+                                                "description": "\u6027\u522b 1\uff1a\u7537 2\uff1a\u5973",
+                                                "type": "integer"
+                                            },
+                                            "introduction": {
+                                                "description": "\u7b80\u4ecb",
+                                                "type": "string"
+                                            },
+                                            "age": {
+                                                "description": "\u5e74\u9f84",
+                                                "type": "integer"
+                                            },
+                                            "photos": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "integral": {
+                                                "description": "\u79ef\u5206\u6570",
+                                                "type": "integer"
+                                            },
+                                            "identifier": {
+                                                "description": "\u8eab\u4efd\u6807\u8bc6\u7b26",
+                                                "type": "string"
+                                            },
+                                            "invitation_count": {
+                                                "description": "\u9080\u8bf7\u7528\u6237\u6570",
+                                                "type": "integer"
+                                            },
+                                            "follow": {
+                                                "description": "\u5173\u6ce8\u4eba\u6570",
+                                                "type": "integer"
+                                            },
+                                            "follower": {
+                                                "description": "\u88ab\u5173\u6ce8\u4eba\u6570",
+                                                "type": "integer"
+                                            },
+                                            "nickname": {
+                                                "description": "\u7528\u6237\u6635\u79f0",
+                                                "type": "string"
+                                            },
+                                            "avatar": {
+                                                "description": "\u5934\u50cf",
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "description": "\u521b\u5efa\u65f6\u95f4",
+                                                "type": "string"
+                                            },
+                                            "updated_at": {
+                                                "description": "\u66f4\u65b0\u65f6\u95f4",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "links": {
+                                    "properties": {
+                                        "first": {
+                                            "description": "\u7b2c\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        },
+                                        "last": {
+                                            "description": "\u6700\u540e\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        },
+                                        "prev": {
+                                            "description": "\u524d\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        },
+                                        "next": {
+                                            "description": "\u540e\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "meta": {
+                                    "properties": {
+                                        "current_page": {
+                                            "description": "\u5f53\u524d\u9875",
+                                            "type": "integer"
+                                        },
+                                        "from": {
+                                            "description": "\u4ece\u7b2c\u51e0\u6761\u5f00\u59cb",
+                                            "type": "integer"
+                                        },
+                                        "to": {
+                                            "description": "\u5230\u7b2c\u51e0\u6761",
+                                            "type": "integer"
+                                        },
+                                        "last_page": {
+                                            "description": "\u6700\u540e\u4e00\u9875\u9875\u7801",
+                                            "type": "integer"
+                                        },
+                                        "path": {
+                                            "description": "\u8def\u5f84",
+                                            "type": "string"
+                                        },
+                                        "total": {
+                                            "description": "\u603b\u6761\u6570",
+                                            "type": "integer"
+                                        },
+                                        "per_page": {
+                                            "description": "\u6bcf\u9875\u663e\u793a\u6761\u6570",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/followers": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "\u88ab\u5173\u6ce8\u7528\u6237\u5217\u8868",
+                "description": "\u88ab\u5173\u6ce8\u7528\u6237\u5217\u8868",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7ed3\u679c\u96c6",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "description": "\u7528\u6237id",
+                                                "type": "integer"
+                                            },
+                                            "name": {
+                                                "description": "\u7528\u6237\u540d",
+                                                "type": "string"
+                                            },
+                                            "phone": {
+                                                "description": "\u7535\u8bdd",
+                                                "type": "string"
+                                            },
+                                            "school_id": {
+                                                "description": "\u5b66\u6821id",
+                                                "type": "integer"
+                                            },
+                                            "gender": {
+                                                "description": "\u6027\u522b 1\uff1a\u7537 2\uff1a\u5973",
+                                                "type": "integer"
+                                            },
+                                            "introduction": {
+                                                "description": "\u7b80\u4ecb",
+                                                "type": "string"
+                                            },
+                                            "age": {
+                                                "description": "\u5e74\u9f84",
+                                                "type": "integer"
+                                            },
+                                            "photos": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "integral": {
+                                                "description": "\u79ef\u5206\u6570",
+                                                "type": "integer"
+                                            },
+                                            "identifier": {
+                                                "description": "\u8eab\u4efd\u6807\u8bc6\u7b26",
+                                                "type": "string"
+                                            },
+                                            "invitation_count": {
+                                                "description": "\u9080\u8bf7\u7528\u6237\u6570",
+                                                "type": "integer"
+                                            },
+                                            "follow": {
+                                                "description": "\u5173\u6ce8\u4eba\u6570",
+                                                "type": "integer"
+                                            },
+                                            "follower": {
+                                                "description": "\u88ab\u5173\u6ce8\u4eba\u6570",
+                                                "type": "integer"
+                                            },
+                                            "nickname": {
+                                                "description": "\u7528\u6237\u6635\u79f0",
+                                                "type": "string"
+                                            },
+                                            "avatar": {
+                                                "description": "\u5934\u50cf",
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "description": "\u521b\u5efa\u65f6\u95f4",
+                                                "type": "string"
+                                            },
+                                            "updated_at": {
+                                                "description": "\u66f4\u65b0\u65f6\u95f4",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "links": {
+                                    "properties": {
+                                        "first": {
+                                            "description": "\u7b2c\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        },
+                                        "last": {
+                                            "description": "\u6700\u540e\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        },
+                                        "prev": {
+                                            "description": "\u524d\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        },
+                                        "next": {
+                                            "description": "\u540e\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "meta": {
+                                    "properties": {
+                                        "current_page": {
+                                            "description": "\u5f53\u524d\u9875",
+                                            "type": "integer"
+                                        },
+                                        "from": {
+                                            "description": "\u4ece\u7b2c\u51e0\u6761\u5f00\u59cb",
+                                            "type": "integer"
+                                        },
+                                        "to": {
+                                            "description": "\u5230\u7b2c\u51e0\u6761",
+                                            "type": "integer"
+                                        },
+                                        "last_page": {
+                                            "description": "\u6700\u540e\u4e00\u9875\u9875\u7801",
+                                            "type": "integer"
+                                        },
+                                        "path": {
+                                            "description": "\u8def\u5f84",
+                                            "type": "string"
+                                        },
+                                        "total": {
+                                            "description": "\u603b\u6761\u6570",
+                                            "type": "integer"
+                                        },
+                                        "per_page": {
+                                            "description": "\u6bcf\u9875\u663e\u793a\u6761\u6570",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/user/follow/{user}": {
+            "delete": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "\u53d6\u5173",
+                "description": "\u53d6\u5173",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "\u7528\u6237id",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7ed3\u679c\u96c6",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "\u5173\u6ce8\u7528\u6237",
+                "description": "\u5173\u6ce8\u7528\u6237",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "\u7528\u6237id",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7ed3\u679c\u96c6",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        },
         "/user-third-auth/wx": {
             "post": {
                 "tags": [

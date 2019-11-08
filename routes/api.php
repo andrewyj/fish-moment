@@ -17,8 +17,12 @@ Route::group(["prefix" => "v1"], function () {
         
         //user
         Route::get('/user', 'UserController@user');
-        Route::post('/logout', 'UserController@login');
+        Route::post('/logout', 'UserController@logout');
         Route::post('/user', 'UserController@modify');
+        Route::patch('/user/follow/{user}', 'UserController@follow');
+        Route::delete('/user/follow/{user}', 'UserController@unFollow');
+        Route::get('/user/followings', 'UserController@followings');
+        Route::get('/user/followers', 'UserController@followers');
         
         //social pool
         Route::post("/social-pool/join/{socialPool}", 'SocialPoolController@join');

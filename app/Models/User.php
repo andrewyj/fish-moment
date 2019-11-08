@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -27,18 +25,7 @@ class User  extends Authenticatable implements JWTSubject
         'photos' => 'array',
     ];
     
-    protected static function boot()
-    {
-        parent::boot();
-        static::creating(function ($model) {
-            if (!$model->token) {
-                $model->token = static::findAvailableToken();
-                if (!$model->token) {
-                    return false;
-                }
-            }
-        });
-    }
+    protected $guarded = ['deleted_at'];
     
     public static function genderMaps() {
         return [
@@ -58,20 +45,12 @@ class User  extends Authenticatable implements JWTSubject
     }
     
     /**
-     * 获取token
-     * @return bool|string
+     * 有效用户
+     * @param $query
+     * @return mixed
      */
-    public static function findAvailableToken()
-    {
-        for ($i = 0; $i < 10; $i++) {
-            $token = hash('sha256', Str::random(60) . uniqid());
-            if (!static::query()->where('token', $token)->exists()) {
-                return $token;
-            }
-        }
-        Log::warning('find order token failed');
-        
-        return false;
+    public function scopeEnabled($query) {
+        return $query->where('disabled', self::DISABLED_NO);
     }
     
     /**
@@ -94,5 +73,13 @@ class User  extends Authenticatable implements JWTSubject
     
     public function socialPools() {
         return $this->belongsToMany(SocialPool::class, UserSocialPool::class);
+    }
+    
+    public function followers() {
+        return $this->belongsToMany(User::class, UserFollower::class, 'user_id', 'follower_id');
+    }
+    
+    public function followings() {
+        return $this->belongsToMany(User::class, UserFollower::class, 'follower_id', 'user_id');
     }
 }

@@ -28,8 +28,8 @@ class UserResource extends JsonResource
             'integral'         => $this->integral,
             'identifier'       => $this->identifier,
             'invitation_count' => $this->invitation_count,
-            'follow'           => $this->follow,
-            'follower'         => $this->follower,
+            'following_count'  => $this->following_count,
+            'follower_count'   => $this->follower_count,
             'created_at'       => $this->created_at,
             'updated_at'       => $this->updated_at,
         ];
