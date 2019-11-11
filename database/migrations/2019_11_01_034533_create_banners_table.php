@@ -20,7 +20,7 @@ class CreateBannersTable extends Migration
             $table->string('code')->comment('banner 码，用于约定banner出现位置');
             $table->string('picture_url')->default('')->comment('图片地址');
             $table->string('url')->default('')->comment('图片链接');
-            $table->tinyInteger('active')->default(1)->comment('是否有效 1：是 0：否');
+            $table->tinyInteger('disabled')->default(0)->comment('是否禁用 1：是 0：否');
             $table->tinyInteger('link_type')->default(0)->comment('链接类型 0：内链 1：外链');
             $table->tinyInteger('sort')->default(0)->comment('排序值');
             $table->timestamps();

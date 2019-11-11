@@ -293,6 +293,7 @@ class UserController extends BaseController
     public function followings() {
         return new UserCollection(request()->user()->followings()->enabled()->paginate());
     }
+    
     /**
      * @SWG\Get(
      *     path="/user/followers",

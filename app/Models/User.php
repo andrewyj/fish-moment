@@ -45,15 +45,6 @@ class User  extends Authenticatable implements JWTSubject
     }
     
     /**
-     * 有效用户
-     * @param $query
-     * @return mixed
-     */
-    public function scopeEnabled($query) {
-        return $query->where('disabled', self::DISABLED_NO);
-    }
-    
-    /**
      * 未被禁用用户
      * @param $query
      * @return mixed

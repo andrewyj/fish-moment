@@ -36,8 +36,13 @@ Route::group(["prefix" => "v1"], function () {
     Route::post("user-third-auth/wx", 'UserThirdAuthController@wxStore');
     Route::get('/wx-check', 'UserThirdAuthController@wxCheck');
     
+    //social pool
     Route::get('/social-pools', 'SocialPoolController@socialPools');
     Route::get('/social-pool/{socialPool}', 'SocialPoolController@detail');
+    
+    //banner
+    Route::get('/banners', 'BannerController@banners');
+    
 });
 
 
