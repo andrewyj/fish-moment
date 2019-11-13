@@ -100,6 +100,70 @@
                 ]
             }
         },
+        "/schools": {
+            "get": {
+                "tags": [
+                    "schools"
+                ],
+                "summary": "\u5b66\u6821\u5217\u8868",
+                "description": "\u5b66\u6821\u5217\u8868",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7ed3\u679c\u96c6",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "initial": {
+                                                "type": "array",
+                                                "items": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "description": "\u5b66\u6821id",
+                                                            "type": "integer"
+                                                        },
+                                                        "name": {
+                                                            "description": "\u5b66\u6821\u540d\u79f0",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        },
         "/social-pools": {
             "get": {
                 "tags": [

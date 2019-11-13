@@ -43,6 +43,9 @@ Route::group(["prefix" => "v1"], function () {
     //banner
     Route::get('/banners', 'BannerController@banners');
     
+    //school
+    Route::get('/schools', 'SchoolController@schools');
+    
 });
 
 
