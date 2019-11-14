@@ -29,6 +29,10 @@ Route::group(["prefix" => "v1"], function () {
         Route::post("/social-pool/quit/{socialPool}", 'SocialPoolController@quit');
         Route::post("/social-pool", 'SocialPoolController@store');
         Route::patch("/social-pool/{socialPool}", 'SocialPoolController@update');
+        
+        //post
+        Route::post('/post', 'PostController@store');
+        Route::get('/post/mine/{status}', 'PostController@mine');
     });
     
     //user
@@ -45,6 +49,9 @@ Route::group(["prefix" => "v1"], function () {
     
     //school
     Route::get('/schools', 'SchoolController@schools');
+    
+    //post
+    Route::get('/post/{post}', 'PostController@show');
     
 });
 
