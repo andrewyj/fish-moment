@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->bigInteger('school_id')->default(0)->comment('学校id');
             $table->longText('content')->comment('内容');
             $table->tinyInteger('resource_type')->default(0)->comment('资源类型 0：图片 1：视频');
-            $table->text('resource_urls')->default('')->comment('资源路径');
+            $table->text('resource_urls')->nullable()->comment('资源路径');
             $table->bigInteger('repost_count')->default(0)->comment('转发次数');
             $table->bigInteger('like_count')->default(0)->comment('喜欢次数');
             $table->bigInteger('dislike_count')->default(0)->comment('不喜欢次数');

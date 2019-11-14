@@ -6,6 +6,7 @@ use App\Http\Requests\PostStore;
 use App\Http\Resources\Collections\PostCollection;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
+use App\Models\PostHeart;
 use App\Models\User;
 
 class PostController extends BaseController
@@ -182,5 +183,105 @@ class PostController extends BaseController
         ])->get();
         
         return new PostCollection($posts);
+    }
+    
+    /**
+     * @SWG\Post(
+     *      path="/post/like/{post}",
+     *      tags={"post"},
+     *      summary="推文喜欢",
+     *      description="推文喜欢",
+     *      consumes={"application/json"},
+     *      produces={"application/json"},
+     *      security={{"api_key": {"scope"}}},
+     *      @SWG\Parameter(
+     *          in="path",
+     *          name="post",
+     *          description="推文id",
+     *          required=true,
+     *          type="integer",
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="结果集",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(property="code", type="integer", description="状态码"),
+     *              @SWG\Property(property="message", type="string", description="状态信息"),
+     *          )
+     *      ),
+     * )
+     */
+    public function like(Post $post) {
+        $like = PostHeart::where([
+            ['user_id', '=', request()->user()->id],
+            ['post_id', '=', $post->id],
+            ['type', '=', PostHeart::TYPE_LIKE],
+        ])->first();
+        
+        //取消喜欢
+        if ($like) {
+            $like->delete();
+            $post->decrement('like_count');
+            return $this->responseSuccess();
+        }
+        $post->increment('like_count');
+        PostHeart::creat([
+            'user_id' => request()->user()->id,
+            'post_id' => $post->id,
+            'type'    => PostHeart::TYPE_LIKE,
+        ]);
+        
+        return $this->responseSuccess();
+    }
+    
+    /**
+     * @SWG\Post(
+     *      path="/post/dislike/{post}",
+     *      tags={"post"},
+     *      summary="推文不喜欢",
+     *      description="推文不喜欢",
+     *      consumes={"application/json"},
+     *      produces={"application/json"},
+     *      security={{"api_key": {"scope"}}},
+     *      @SWG\Parameter(
+     *          in="path",
+     *          name="post",
+     *          description="推文id",
+     *          required=true,
+     *          type="integer",
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="结果集",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(property="code", type="integer", description="状态码"),
+     *              @SWG\Property(property="message", type="string", description="状态信息"),
+     *          )
+     *      ),
+     * )
+     */
+    public function dislike(Post $post) {
+        $dislike = PostHeart::where([
+            ['user_id', '=', request()->user()->id],
+            ['post_id', '=', $post->id],
+            ['type', '=', PostHeart::TYPE_DISLIKE],
+        ])->first();
+        
+        //取消不喜欢
+        if ($dislike) {
+            $dislike->delete();
+            $post->decrement('dislike_count');
+            return $this->responseSuccess();
+        }
+        $post->increment('dislike_count');
+        PostHeart::creat([
+            'user_id' => request()->user()->id,
+            'post_id' => $post->id,
+            'type'    => PostHeart::TYPE_DISLIKE,
+        ]);
+        
+        return $this->responseSuccess();
     }
 }

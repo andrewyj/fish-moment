@@ -33,6 +33,8 @@ Route::group(["prefix" => "v1"], function () {
         //post
         Route::post('/post', 'PostController@store');
         Route::get('/post/mine/{status}', 'PostController@mine');
+        Route::post('/post/like/{post}', 'PostController@like');
+        Route::post('/post/dislike/{post}', 'PostController@dislike');
     });
     
     //user

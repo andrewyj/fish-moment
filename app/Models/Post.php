@@ -45,6 +45,15 @@ class Post extends Model
         ];
     }
     
+    public function likes() {
+        return $this->belongsToMany(User::class, PostHeart::class)->wherePivot('type', PostHeart::TYPE_LIKE);
+    }
+    
+    
+    public function dislikes() {
+        return $this->belongsToMany(User::class, PostHeart::class)->wherePivot('type', PostHeart::TYPE_DISLIKE);
+    }
+    
     public function tags() {
         return $this->belongsToMany(Tag::class, TagPost::class);
     }
