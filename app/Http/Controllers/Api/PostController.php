@@ -284,4 +284,40 @@ class PostController extends BaseController
         
         return $this->responseSuccess();
     }
+    
+    /**
+     * @SWG\Delete(
+     *      path="/post/{post}",
+     *      tags={"post"},
+     *      summary="删除推文",
+     *      description="删除推文",
+     *      consumes={"application/json"},
+     *      produces={"application/json"},
+     *      security={{"api_key": {"scope"}}},
+     *      @SWG\Parameter(
+     *          in="path",
+     *          name="post",
+     *          description="推文id",
+     *          required=true,
+     *          type="integer",
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="结果集",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(property="code", type="integer", description="状态码"),
+     *              @SWG\Property(property="message", type="string", description="状态信息"),
+     *          )
+     *      ),
+     * )
+     */
+    public function delete(Post $post) {
+        if ($post->user_id != request()->user()->id) {
+            return $this->responseFailed('只能删除自己发布的帖子');
+        }
+        $post->delete();
+        
+        return $this->responseSuccess();
+    }
 }

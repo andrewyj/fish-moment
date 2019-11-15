@@ -35,6 +35,7 @@ Route::group(["prefix" => "v1"], function () {
         Route::get('/post/mine/{status}', 'PostController@mine');
         Route::post('/post/like/{post}', 'PostController@like');
         Route::post('/post/dislike/{post}', 'PostController@dislike');
+        Route::delete('/post/{post}', 'PostController@delete');
     });
     
     //user
