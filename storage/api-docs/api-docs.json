@@ -100,6 +100,217 @@
                 ]
             }
         },
+        "/post-comment": {
+            "post": {
+                "tags": [
+                    "post-comment"
+                ],
+                "summary": "\u521b\u5efa\u63a8\u6587\u8bc4\u8bba",
+                "description": "\u521b\u5efa\u63a8\u6587\u8bc4\u8bba",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "data",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "content": {
+                                    "description": "\u5185\u5bb9",
+                                    "type": "string"
+                                },
+                                "post_id": {
+                                    "description": "\u63a8\u6587id",
+                                    "type": "integer"
+                                },
+                                "comment_parent_id": {
+                                    "description": "\u7236\u8bc4\u8bbaid\uff08\u56de\u590d\u8bc4\u8bba\uff09\uff0c\u9009\u586b",
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7ed3\u679c\u96c6",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/post-comment/{postComment}": {
+            "delete": {
+                "tags": [
+                    "post-comment"
+                ],
+                "summary": "\u5220\u9664\u63a8\u6587\u8bc4\u8bba",
+                "description": "\u5220\u9664\u63a8\u6587\u8bc4\u8bba",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "postComment",
+                        "in": "path",
+                        "description": "\u8bc4\u8bbaid",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7ed3\u679c\u96c6",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/post-comment/{post}": {
+            "get": {
+                "tags": [
+                    "post-comment"
+                ],
+                "summary": "\u83b7\u53d6\u63a8\u6587\u4e0b\u7684\u8bc4\u8bba\u6811",
+                "description": "\u83b7\u53d6\u63a8\u6587\u4e0b\u7684\u8bc4\u8bba\u6811",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "post",
+                        "in": "path",
+                        "description": "\u63a8\u6587id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7ed3\u679c\u96c6",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "description": "\u8bc4\u8bbaid",
+                                                "type": "integer"
+                                            },
+                                            "nickname": {
+                                                "description": "\u7528\u6237\u6635\u79f0",
+                                                "type": "string"
+                                            },
+                                            "content": {
+                                                "description": "\u8bc4\u8bba\u5185\u5bb9",
+                                                "type": "string"
+                                            },
+                                            "like_count": {
+                                                "description": "\u559c\u6b22\u6b21\u6570",
+                                                "type": "integer"
+                                            },
+                                            "children": {
+                                                "type": "array",
+                                                "items": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "description": "\u8bc4\u8bbaid",
+                                                            "type": "integer"
+                                                        },
+                                                        "nickname": {
+                                                            "description": "\u7528\u6237\u6635\u79f0",
+                                                            "type": "string"
+                                                        },
+                                                        "content": {
+                                                            "description": "\u8bc4\u8bba\u5185\u5bb9",
+                                                            "type": "string"
+                                                        },
+                                                        "like_count": {
+                                                            "description": "\u559c\u6b22\u6b21\u6570",
+                                                            "type": "integer"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        },
         "/post": {
             "post": {
                 "tags": [

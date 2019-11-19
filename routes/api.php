@@ -36,6 +36,10 @@ Route::group(["prefix" => "v1"], function () {
         Route::post('/post/like/{post}', 'PostController@like');
         Route::post('/post/dislike/{post}', 'PostController@dislike');
         Route::delete('/post/{post}', 'PostController@delete');
+    
+        //post-comment
+        Route::post('/post-comment', 'PostCommentController@store');
+        Route::delete('/post-comment/{postComment}', 'PostCommentController@delete');
     });
     
     //user
@@ -55,6 +59,9 @@ Route::group(["prefix" => "v1"], function () {
     
     //post
     Route::get('/post/{post}', 'PostController@show');
+    
+    //post-comment
+    Route::get('/post-comment/{post}', 'PostCommentController@postComments');
     
 });
 
