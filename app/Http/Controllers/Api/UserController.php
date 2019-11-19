@@ -194,7 +194,7 @@ class UserController extends BaseController
             return $this->unauthorized();
         }
         
-        if (auth()->user()->disabled == User::DISABLED_YES) {
+        if (auth('api')->user()->disabled == User::DISABLED_YES) {
             return $this->unauthorized('用户已被禁用');
         }
         
@@ -354,6 +354,35 @@ class UserController extends BaseController
      */
     public function followers() {
         return new UserCollection(request()->user()->followers()->enabled()->paginate());
+    }
+    
+    /**
+     * @SWG\Post(
+     *     path="/login/check",
+     *     summary="登录状态检测",
+     *     tags={"user"},
+     *     description="登录状态检测",
+     *     security={{"api_key": {"scope"}}},
+     *     consumes={"application/json"},
+     *     produces={"application/json"},
+     *     @SWG\Response(
+     *         response=200,
+     *         description="返回结果",
+     *         @SWG\Schema(
+     *             type="object",
+     *             @SWG\Property(property="code", type="integer", description="状态码"),
+     *             @SWG\Property(property="message", type="string", description="状态信息"),
+     *             @SWG\Property(property="data", type="object",
+     *                  @SWG\Property(property="is_login", type="boolean", description="是否登录"),
+     *             ),
+     *         )
+     *     )
+     * )
+     */
+    public function checkLogin() {
+        $isLogin = auth('api')->user() ? true : false;
+        
+        return $this->responseData(['is_login' => $isLogin]);
     }
     
     /**

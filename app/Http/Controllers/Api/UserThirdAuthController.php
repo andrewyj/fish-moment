@@ -60,6 +60,8 @@ class UserThirdAuthController extends BaseController {
      *             @SWG\Property(property="message", type="string", description="状态信息"),
      *             @SWG\Property(property="data", type="object",
      *                  @SWG\Property(property="token", type="string", description="登录token"),
+     *                  @SWG\Property(property="expires_in", type="string", description="过期时间"),
+     *                  @SWG\Property(property="token_type", type="string", description="token类型"),
      *             ),
      *         )
      *     )
@@ -92,7 +94,11 @@ class UserThirdAuthController extends BaseController {
                 return $this->responseError('登录失败');
             }
         }
-        
-        return $this->responseData(['token' => auth('api')->login($user)]);
+    
+        return $this->responseData([
+            'token' => auth('api')->login($user),
+            'expires_in' => auth('api')->factory()->getTTL() * 60,
+            'token_type' => 'Bearer',
+        ]);
     }
 }

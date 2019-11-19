@@ -44,6 +44,7 @@ Route::group(["prefix" => "v1"], function () {
     
     //user
     Route::post('/login', 'UserController@login');
+    Route::post('/login/check', 'UserController@checkLogin');
     Route::post("user-third-auth/wx", 'UserThirdAuthController@wxStore');
     Route::get('/wx-check', 'UserThirdAuthController@wxCheck');
     
