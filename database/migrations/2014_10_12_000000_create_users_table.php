@@ -16,8 +16,8 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('school_id')->nullable()->comment('所属院校id');
-            $table->string('username')->default("")->comment('用户名')->unique();
-            $table->string('phone')->default("")->comment('手机号')->unique();
+            $table->string('username')->default("")->comment('用户名');
+            $table->string('phone')->nullable()->comment('手机号')->unique();
             $table->string('nickname')->default("")->comment("用户昵称");
             $table->tinyInteger('gender')->default(0)->comment('性别 0：未知 1：男 2：女');
             $table->string('avatar')->default("")->comment('头像地址');

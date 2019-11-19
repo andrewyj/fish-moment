@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\UserStore;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Services\WeixinService;
 
 class UserThirdAuthController extends BaseController {
     
@@ -12,7 +12,7 @@ class UserThirdAuthController extends BaseController {
      * @SWG\Post(
      *     path="/user-third-auth/wx",
      *     summary="微信登录",
-     *     tags={"userThirdAuth"},
+     *     tags={"user-third-auth"},
      *     description="微信登录",
      *     security={{"api_key": {"scope"}}},
      *     consumes={"application/json"},
@@ -28,6 +28,26 @@ class UserThirdAuthController extends BaseController {
      *                  property="code",
      *                  type="string",
      *                  description="微信授权码",
+     *              ),
+     *              @SWG\Property(
+     *                  property="nickName",
+     *                  type="string",
+     *                  description="昵称",
+     *              ),
+     *              @SWG\Property(
+     *                  property="signature",
+     *                  type="string",
+     *                  description="签名",
+     *              ),
+     *              @SWG\Property(
+     *                  property="gender",
+     *                  type="integer",
+     *                  description="性别  1:男 2：女",
+     *              ),
+     *              @SWG\Property(
+     *                  property="avatarUrl",
+     *                  type="string",
+     *                  description="头像地址",
      *              ),
      *          ),
      *      ),
@@ -45,60 +65,34 @@ class UserThirdAuthController extends BaseController {
      *     )
      * )
      */
-    public function wxStore(Request $request) {
-        $request->validate([
-            'code' => 'required|string',
-        ]);
+    public function wxStore(UserStore $request) {
+        $validated = $request->validated();
+        $service = new WeixinService();
+        $openid  = $service->getOpenId($request->post('code'));
         
-        $code = $request->post('code');
-        $driver = \Socialite::driver(User::AUTH_TYPE_WECHAT);
-        
-        try {
-            $response  = $driver->getAccessTokenResponse($code);
-            $token     = array_get($response, 'access_token');
-            $oauthUser = $driver->userFromToken($token);
-        } catch (\Exception $e) {
-            logPlus('wechat login error', [
-                'errorMessage' => $e->getMessage(),
-                'response'     => $response ?? '',
-                'oauthUser'    => $oauthUser ?? '',
-            ], 'wechat');
-            
-            return $this->unauthorized('参数错误，未获取用户信息');
+        if (!$openid) {
+            return $this->responseFailed($service->getErrorMessage());
         }
         
-        $unionId = $oauthUser->offsetExists('unionid') ? : null;
-        
-        if ($unionId) {
-            $user = User::where([
-                ['auth_type', User::AUTH_TYPE_WECHAT],
-                ['union_id', $unionId]
-            ])->first();
-        } else {
-            $user = User::where('open_id', $oauthUser->getId())->first();
-        }
-        
+        $user = User::where('open_id', $openid)->first();
+    
         if (!$user) {
-            
             try {
-                DB::beginTransaction();
                 $user = User::create([
                     'auth_type' => User::AUTH_TYPE_WECHAT,
-                    'open_id'   => $oauthUser->getId(),
-                    'union_id'  => $unionId,
-                    'nickname'  => $oauthUser->getNickname(),
-                    'avatar'    => $oauthUser->getAvatar(),
-                    'user_id'   => $user->id
+                    'open_id'   => $openid,
+                    'nickname'  => $validated['nickName'],
+                    'gender'    => $validated['gender'],
+                    'avatar'    => $validated['avatarUrl'],
+                    'introduction' => $validated['signature'],
                 ]);
             } catch (\Exception $e) {
-                DB::rollBack();
                 logPlus('user generate form wechat error', ['errorMessage' => $e->getMessage()], 'wechat');
                 
                 return $this->responseError('登录失败');
             }
-            DB::commit();
         }
         
-        return $this->responseData(['token' => $user->token]);
+        return $this->responseData(['token' => auth('api')->login($user)]);
     }
 }

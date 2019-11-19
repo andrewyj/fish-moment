@@ -2097,7 +2097,7 @@
         "/user-third-auth/wx": {
             "post": {
                 "tags": [
-                    "userThirdAuth"
+                    "user-third-auth"
                 ],
                 "summary": "\u5fae\u4fe1\u767b\u5f55",
                 "description": "\u5fae\u4fe1\u767b\u5f55",
@@ -2117,6 +2117,22 @@
                             "properties": {
                                 "code": {
                                     "description": "\u5fae\u4fe1\u6388\u6743\u7801",
+                                    "type": "string"
+                                },
+                                "nickName": {
+                                    "description": "\u6635\u79f0",
+                                    "type": "string"
+                                },
+                                "signature": {
+                                    "description": "\u7b7e\u540d",
+                                    "type": "string"
+                                },
+                                "gender": {
+                                    "description": "\u6027\u522b  1:\u7537 2\uff1a\u5973",
+                                    "type": "integer"
+                                },
+                                "avatarUrl": {
+                                    "description": "\u5934\u50cf\u5730\u5740",
                                     "type": "string"
                                 }
                             },
