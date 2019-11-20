@@ -29,7 +29,9 @@ class WeixinService
         if ($response->getStatusCode()) {
             $result = json_decode($response->getBody());
             if (!isset($result->openid)) {
+                logPlus('wechat openid fetch error', ['errorMessage' => $result], 'wechat');
                 $this->errorMessage = '参数错误，未获取到用户信息';
+                
                 return false;
             }
             
