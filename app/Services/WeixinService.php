@@ -26,7 +26,7 @@ class WeixinService
         ]];
         $response = $this->client->get('sns/jscode2session', $options);
         
-        if ($response->getStatusCode()) {
+        if ($response->getStatusCode() == 200) {
             $result = json_decode($response->getBody());
             if (!isset($result->openid)) {
                 logPlus('wechat openid fetch error', ['errorMessage' => $result], 'wechat');

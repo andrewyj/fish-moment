@@ -26,6 +26,7 @@ function logPlus($message, $content, $path, $level = 'debug') {
         return false;
     }
     $path = config("log.$path");
+    echo $path;die;
     $stream_handler = new \Monolog\Handler\RotatingFileHandler($path);
     
     $stream_handler->setFormatter(new \Monolog\Formatter\JsonFormatter());

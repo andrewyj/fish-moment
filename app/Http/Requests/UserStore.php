@@ -27,10 +27,10 @@ class UserStore extends FormRequest
         $genders = implode(',', array_keys(User::genderMaps()));
         return [
             'code'        => 'required|string',
-            'gender'      => "required|in:$genders",
-            'nickName'    => 'required|string',
-            'signature'   => 'required|string',
-            'avatarUrl'   => 'required|url',
+            'gender'      => "in:$genders",
+            'nickName'    => 'string',
+            'signature'   => 'string',
+            'avatarUrl'   => 'url',
         ];
     }
 }
