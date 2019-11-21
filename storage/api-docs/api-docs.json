@@ -378,6 +378,316 @@
                 ]
             }
         },
+        "/posts": {
+            "get": {
+                "tags": [
+                    "post"
+                ],
+                "summary": "\u63a8\u6587\u5217\u8868",
+                "description": "\u63a8\u6587\u5217\u8868",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "school_id",
+                        "in": "query",
+                        "description": "\u6240\u5c5e\u5b66\u6821\uff0c\u4e0d\u4f20\uff1a\u6240\u6709\uff0c0\uff1a\u516c\u5171\u5708\u5b50 \u5b66\u6821id\uff1a\u8be5\u5b66\u6821\u4e0b\u7684\u63a8\u6587",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7ed3\u679c\u96c6",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "description": "\u7528\u6237id",
+                                                "type": "integer"
+                                            },
+                                            "user_id": {
+                                                "description": "\u7528\u6237id",
+                                                "type": "integer"
+                                            },
+                                            "school_id": {
+                                                "description": "\u5b66\u6821id",
+                                                "type": "integer"
+                                            },
+                                            "verify_status": {
+                                                "description": "\u5ba1\u6838\u72b6\u6001 0\uff1a\u5f85\u5ba1\u6838 1\uff1a\u5ba1\u6838\u4e2d 2\uff1a\u5ba1\u6838\u901a\u8fc7",
+                                                "type": "integer"
+                                            },
+                                            "resource_type": {
+                                                "description": "\u8d44\u6e90\u7c7b\u578b 0\uff1a\u56fe\u7247 1\uff1a\u89c6\u9891",
+                                                "type": "integer"
+                                            },
+                                            "resource_urls": {
+                                                "description": "\u8d44\u6e90\u94fe\u63a5\u5730\u5740\u6570\u7ec4",
+                                                "type": "string"
+                                            },
+                                            "repost_count": {
+                                                "description": "\u8f6c\u53d1\u6b21\u6570",
+                                                "type": "integer"
+                                            },
+                                            "like_count": {
+                                                "description": "\u559c\u6b22\u6b21\u6570",
+                                                "type": "integer"
+                                            },
+                                            "dislike_count": {
+                                                "description": "\u4e0d\u559c\u6b22\u6b21\u6570",
+                                                "type": "integer"
+                                            },
+                                            "comment_count": {
+                                                "description": "\u8bc4\u8bba\u6b21\u6570",
+                                                "type": "integer"
+                                            },
+                                            "content": {
+                                                "description": "\u5185\u5bb9",
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "description": "\u521b\u5efa\u65f6\u95f4",
+                                                "type": "string"
+                                            },
+                                            "updated_at": {
+                                                "description": "\u66f4\u65b0\u65f6\u95f4",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "links": {
+                                    "properties": {
+                                        "first": {
+                                            "description": "\u7b2c\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        },
+                                        "last": {
+                                            "description": "\u6700\u540e\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        },
+                                        "prev": {
+                                            "description": "\u524d\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        },
+                                        "next": {
+                                            "description": "\u540e\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "meta": {
+                                    "properties": {
+                                        "current_page": {
+                                            "description": "\u5f53\u524d\u9875",
+                                            "type": "integer"
+                                        },
+                                        "from": {
+                                            "description": "\u4ece\u7b2c\u51e0\u6761\u5f00\u59cb",
+                                            "type": "integer"
+                                        },
+                                        "to": {
+                                            "description": "\u5230\u7b2c\u51e0\u6761",
+                                            "type": "integer"
+                                        },
+                                        "last_page": {
+                                            "description": "\u6700\u540e\u4e00\u9875\u9875\u7801",
+                                            "type": "integer"
+                                        },
+                                        "path": {
+                                            "description": "\u8def\u5f84",
+                                            "type": "string"
+                                        },
+                                        "total": {
+                                            "description": "\u603b\u6761\u6570",
+                                            "type": "integer"
+                                        },
+                                        "per_page": {
+                                            "description": "\u6bcf\u9875\u663e\u793a\u6761\u6570",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/posts/followings": {
+            "get": {
+                "tags": [
+                    "post"
+                ],
+                "summary": "\u5173\u6ce8\u7684\u63a8\u6587\u5217\u8868",
+                "description": "\u5173\u6ce8\u7684\u63a8\u6587\u5217\u8868",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7ed3\u679c\u96c6",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "description": "\u7528\u6237id",
+                                                "type": "integer"
+                                            },
+                                            "user_id": {
+                                                "description": "\u7528\u6237id",
+                                                "type": "integer"
+                                            },
+                                            "school_id": {
+                                                "description": "\u5b66\u6821id",
+                                                "type": "integer"
+                                            },
+                                            "verify_status": {
+                                                "description": "\u5ba1\u6838\u72b6\u6001 0\uff1a\u5f85\u5ba1\u6838 1\uff1a\u5ba1\u6838\u4e2d 2\uff1a\u5ba1\u6838\u901a\u8fc7",
+                                                "type": "integer"
+                                            },
+                                            "resource_type": {
+                                                "description": "\u8d44\u6e90\u7c7b\u578b 0\uff1a\u56fe\u7247 1\uff1a\u89c6\u9891",
+                                                "type": "integer"
+                                            },
+                                            "resource_urls": {
+                                                "description": "\u8d44\u6e90\u94fe\u63a5\u5730\u5740\u6570\u7ec4",
+                                                "type": "string"
+                                            },
+                                            "repost_count": {
+                                                "description": "\u8f6c\u53d1\u6b21\u6570",
+                                                "type": "integer"
+                                            },
+                                            "like_count": {
+                                                "description": "\u559c\u6b22\u6b21\u6570",
+                                                "type": "integer"
+                                            },
+                                            "dislike_count": {
+                                                "description": "\u4e0d\u559c\u6b22\u6b21\u6570",
+                                                "type": "integer"
+                                            },
+                                            "comment_count": {
+                                                "description": "\u8bc4\u8bba\u6b21\u6570",
+                                                "type": "integer"
+                                            },
+                                            "content": {
+                                                "description": "\u5185\u5bb9",
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "description": "\u521b\u5efa\u65f6\u95f4",
+                                                "type": "string"
+                                            },
+                                            "updated_at": {
+                                                "description": "\u66f4\u65b0\u65f6\u95f4",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "links": {
+                                    "properties": {
+                                        "first": {
+                                            "description": "\u7b2c\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        },
+                                        "last": {
+                                            "description": "\u6700\u540e\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        },
+                                        "prev": {
+                                            "description": "\u524d\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        },
+                                        "next": {
+                                            "description": "\u540e\u4e00\u9875\u9875\u7801\u8df3\u8f6c\u5730\u5740",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "meta": {
+                                    "properties": {
+                                        "current_page": {
+                                            "description": "\u5f53\u524d\u9875",
+                                            "type": "integer"
+                                        },
+                                        "from": {
+                                            "description": "\u4ece\u7b2c\u51e0\u6761\u5f00\u59cb",
+                                            "type": "integer"
+                                        },
+                                        "to": {
+                                            "description": "\u5230\u7b2c\u51e0\u6761",
+                                            "type": "integer"
+                                        },
+                                        "last_page": {
+                                            "description": "\u6700\u540e\u4e00\u9875\u9875\u7801",
+                                            "type": "integer"
+                                        },
+                                        "path": {
+                                            "description": "\u8def\u5f84",
+                                            "type": "string"
+                                        },
+                                        "total": {
+                                            "description": "\u603b\u6761\u6570",
+                                            "type": "integer"
+                                        },
+                                        "per_page": {
+                                            "description": "\u6bcf\u9875\u663e\u793a\u6761\u6570",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        },
         "/post/{post}": {
             "get": {
                 "tags": [

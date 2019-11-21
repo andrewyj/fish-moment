@@ -27,7 +27,7 @@ class PostStore extends FormRequest
         $resourceType = implode(',', array_keys(Post::resourceTypeMaps()));
         return [
             'content'         => 'required|string',
-            'resource_type'   => "in|$resourceType",
+            'resource_type'   => "in:$resourceType",
             'resource_urls'   => 'array',
             'resource_urls.*' => 'url',
         ];

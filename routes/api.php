@@ -36,7 +36,8 @@ Route::group(["prefix" => "v1"], function () {
         Route::post('/post/like/{post}', 'PostController@like');
         Route::post('/post/dislike/{post}', 'PostController@dislike');
         Route::delete('/post/{post}', 'PostController@delete');
-    
+        Route::get('/posts/followings', 'PostController@followingPosts');
+        
         //post-comment
         Route::post('/post-comment', 'PostCommentController@store');
         Route::delete('/post-comment/{postComment}', 'PostCommentController@delete');
@@ -60,6 +61,7 @@ Route::group(["prefix" => "v1"], function () {
     
     //post
     Route::get('/post/{post}', 'PostController@show');
+    Route::get('/posts', 'PostController@posts');
     
     //post-comment
     Route::get('/post-comment/{post}', 'PostCommentController@postComments');

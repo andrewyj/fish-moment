@@ -67,6 +67,131 @@ class PostController extends BaseController
     
     /**
      * @SWG\Get(
+     *      path="/posts",
+     *      tags={"post"},
+     *      summary="推文列表",
+     *      description="推文列表",
+     *      produces={"application/json"},
+     *      security={{"api_key": {"scope"}}},
+     *      @SWG\Parameter(
+     *          in="query",
+     *          name="school_id",
+     *          description="所属学校，不传：所有，0：公共圈子 学校id：该学校下的推文",
+     *          type="integer",
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="结果集",
+     *          @SWG\Schema(
+     *             type="object",
+     *             @SWG\Property(property="code", type="integer", description="状态码"),
+     *             @SWG\Property(property="message", type="string", description="状态信息"),
+     *             @SWG\Property(property="data", type="array",
+     *                 @SWG\Items(type="object",
+     *                     @SWG\Property(property="id", type="integer", description="用户id"),
+     *                     @SWG\Property(property="user_id", type="integer", description="用户id"),
+     *                     @SWG\Property(property="school_id", type="integer", description="学校id"),
+     *                     @SWG\Property(property="verify_status", type="integer", description="审核状态 0：待审核 1：审核中 2：审核通过"),
+     *                     @SWG\Property(property="resource_type", type="integer", description="资源类型 0：图片 1：视频"),
+     *                     @SWG\Property(property="resource_urls", type="string", description="资源链接地址数组"),
+     *                     @SWG\Property(property="repost_count", type="integer", description="转发次数"),
+     *                     @SWG\Property(property="like_count", type="integer", description="喜欢次数"),
+     *                     @SWG\Property(property="dislike_count", type="integer", description="不喜欢次数"),
+     *                     @SWG\Property(property="comment_count", type="integer", description="评论次数"),
+     *                     @SWG\Property(property="content", type="string", description="内容"),
+     *                     @SWG\Property(property="created_at", type="string", description="创建时间"),
+     *                     @SWG\Property(property="updated_at", type="string", description="更新时间"),
+     *                 ),
+     *             ),
+     *             @SWG\Property(property="links", type="object",
+     *                @SWG\Property(property="first", type="string", description="第一页页码跳转地址"),
+     *                @SWG\Property(property="last", type="string", description="最后一页页码跳转地址"),
+     *                @SWG\Property(property="prev", type="string", description="前一页页码跳转地址"),
+     *                @SWG\Property(property="next", type="string", description="后一页页码跳转地址"),
+     *             ),
+     *             @SWG\Property(property="meta", type="object",
+     *                @SWG\Property(property="current_page", type="integer", description="当前页"),
+     *                @SWG\Property(property="from", type="integer", description="从第几条开始"),
+     *                @SWG\Property(property="to", type="integer", description="到第几条"),
+     *                @SWG\Property(property="last_page", type="integer", description="最后一页页码"),
+     *                @SWG\Property(property="path", type="string", description="路径"),
+     *                @SWG\Property(property="total", type="integer", description="总条数"),
+     *                @SWG\Property(property="per_page", type="integer", description="每页显示条数"),
+     *             ),
+     *         )
+     *      ),
+     * )
+     */
+    public function posts() {
+        $schoolId = request()->get('school_id', '');
+        $posts = Post::where('verify_status', Post::VERIFY_STATUS_PASS);
+        if ($schoolId !== '' && is_integer($schoolId)) {
+            $posts->where('school_id', $schoolId);
+        }
+        
+        return new PostCollection($posts->paginate());
+    }
+    
+    /**
+     * @SWG\Get(
+     *      path="/posts/followings",
+     *      tags={"post"},
+     *      summary="关注的推文列表",
+     *      description="关注的推文列表",
+     *      produces={"application/json"},
+     *      security={{"api_key": {"scope"}}},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="结果集",
+     *          @SWG\Schema(
+     *             type="object",
+     *             @SWG\Property(property="code", type="integer", description="状态码"),
+     *             @SWG\Property(property="message", type="string", description="状态信息"),
+     *             @SWG\Property(property="data", type="array",
+     *                 @SWG\Items(type="object",
+     *                     @SWG\Property(property="id", type="integer", description="用户id"),
+     *                     @SWG\Property(property="user_id", type="integer", description="用户id"),
+     *                     @SWG\Property(property="school_id", type="integer", description="学校id"),
+     *                     @SWG\Property(property="verify_status", type="integer", description="审核状态 0：待审核 1：审核中 2：审核通过"),
+     *                     @SWG\Property(property="resource_type", type="integer", description="资源类型 0：图片 1：视频"),
+     *                     @SWG\Property(property="resource_urls", type="string", description="资源链接地址数组"),
+     *                     @SWG\Property(property="repost_count", type="integer", description="转发次数"),
+     *                     @SWG\Property(property="like_count", type="integer", description="喜欢次数"),
+     *                     @SWG\Property(property="dislike_count", type="integer", description="不喜欢次数"),
+     *                     @SWG\Property(property="comment_count", type="integer", description="评论次数"),
+     *                     @SWG\Property(property="content", type="string", description="内容"),
+     *                     @SWG\Property(property="created_at", type="string", description="创建时间"),
+     *                     @SWG\Property(property="updated_at", type="string", description="更新时间"),
+     *                 ),
+     *             ),
+     *             @SWG\Property(property="links", type="object",
+     *                @SWG\Property(property="first", type="string", description="第一页页码跳转地址"),
+     *                @SWG\Property(property="last", type="string", description="最后一页页码跳转地址"),
+     *                @SWG\Property(property="prev", type="string", description="前一页页码跳转地址"),
+     *                @SWG\Property(property="next", type="string", description="后一页页码跳转地址"),
+     *             ),
+     *             @SWG\Property(property="meta", type="object",
+     *                @SWG\Property(property="current_page", type="integer", description="当前页"),
+     *                @SWG\Property(property="from", type="integer", description="从第几条开始"),
+     *                @SWG\Property(property="to", type="integer", description="到第几条"),
+     *                @SWG\Property(property="last_page", type="integer", description="最后一页页码"),
+     *                @SWG\Property(property="path", type="string", description="路径"),
+     *                @SWG\Property(property="total", type="integer", description="总条数"),
+     *                @SWG\Property(property="per_page", type="integer", description="每页显示条数"),
+     *             ),
+     *         )
+     *      ),
+     * )
+     */
+    public function followingPosts() {
+        $userIds = request()->user()->followings->keyBy('id')->keys();
+        $posts = Post::where('verify_status', Post::VERIFY_STATUS_PASS)->whereIn('user_id', $userIds);
+        
+        return new PostCollection($posts->paginate());
+    }
+    
+    /**
+     * @SWG\Get(
      *      path="/post/{post}",
      *      tags={"post"},
      *      summary="推文详情",
