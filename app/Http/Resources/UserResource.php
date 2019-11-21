@@ -16,7 +16,7 @@ class UserResource extends JsonResource
     {
         return [
             'id'               => $this->id,
-            'name'             => $this->name,
+            'username'         => $this->username,
             'phone'            => $this->phone,
             'school_id'        => $this->school_id,
             'nickname'         => $this->nickname,
@@ -30,6 +30,7 @@ class UserResource extends JsonResource
             'invitation_count' => $this->invitation_count,
             'following_count'  => $this->following_count,
             'follower_count'   => $this->follower_count,
+            'invitation_code'  => $this->invitation_code,
             'created_at'       => $this->created_at,
             'updated_at'       => $this->updated_at,
         ];

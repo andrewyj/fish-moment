@@ -1375,7 +1375,7 @@
                                             "description": "\u7528\u6237id",
                                             "type": "integer"
                                         },
-                                        "name": {
+                                        "username": {
                                             "description": "\u7528\u6237\u540d",
                                             "type": "string"
                                         },
@@ -1431,6 +1431,10 @@
                                         },
                                         "avatar": {
                                             "description": "\u5934\u50cf",
+                                            "type": "string"
+                                        },
+                                        "invitation_code": {
+                                            "description": "\u9080\u8bf7\u7801",
                                             "type": "string"
                                         },
                                         "created_at": {

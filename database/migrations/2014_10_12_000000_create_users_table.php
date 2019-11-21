@@ -26,8 +26,8 @@ class CreateUsersTable extends Migration
             $table->string('identifier')->default('')->comment('学号');
             $table->string('password')->default('')->comment('密码');
     
-            $table->string('oauth_id')->default("")->comment('第三方登录验证id')->unique();
-            $table->string('union_id')->default("")->comment('unionid');
+            $table->string('oauth_id')->nullable()->comment('第三方登录验证id')->unique();
+            $table->string('union_id')->nullable()->comment('unionid')->unique();
             $table->string('open_id')->default("")->comment('open_id');
             $table->string('auth_type')->default("")->comment('第三方登录类型');
     
