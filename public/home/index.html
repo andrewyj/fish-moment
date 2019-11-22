@@ -1,48 +1,388 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>厦门鱼鲸信息科技有限公司</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all,follow">
-    <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-    <!-- Google fonts - Roboto for copy, Montserrat for headings-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
-    <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
-    <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/custom.css">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="favicon.png">
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-  </head>
-  <body>
-    <div class="container-fluid">
-      <div class="row min-vh-100">
-        <div class="col-xl-5 col-lg-6 col-md-8 p-5 p-lg-4 mx-auto d-flex align-items-center">
-          <div>
-            <p> <a href="index.html" > <img src="img/LOGO2.png" alt="LOGO" title="鱼鲸科技"></a></p>
-            <h1 class="text-uppercase">厦门鱼鲸信息科技有限公司</h1>
-            <p class="lead">XiaMen Fish Whale Mdt Info Tech.Ltd</p>
-            <p>厦门鱼鲸信息科技有限公司成立于2019年，是一家是一家有活力 有朝气的互联网公司，目前主要项目有大学生社交平台“鱼圈在线”，打造线上+线下的互联网社交模式。分享你的大学生活，打造属于你的社交圈子 </p>
-            <p class="social"><a href="#" class="WeiXin"><i class="fab fa-weixin"></i></a><a href="tencent://message/?uin=1722570521&Site=Sambow&Menu=yes" class="QQ"><i class="fab fa-qq"></i></a></a><a href="mailto:1722570521@qq.com" class="email"><i class="fa fa-envelope"> </i></a></p>
-            <p class="credit">Copyright © 2019 <a href="index.html" title="鱼鲸科技">鱼鲸科技</a> |  <a href="http://fj.beian.miit.gov.cn/state/outPortal/loginPortal.action" target="_blank" title="网站备案">闽ICP备19021970号-1</a> - Collect from <a href="http://www.fishpond.fun/" title="鱼圈APP" target="_blank">鱼圈在线</a></p>
-            <!-- Please do not remove the backlink to bootstrapious unless your Attribution-Free License @ https://bootstrapious.com/attribution-free-license. It is part of the license conditions. Thanks for understanding :) -->
-          </div>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>鱼鲸信息科技</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="favicon.ico">
+<!-- Favicons
+    ================================================== -->
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+
+<!-- Stylesheet
+    ================================================== -->
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/nivo-lightbox/nivo-lightbox.css">
+<link rel="stylesheet" type="text/css" href="css/nivo-lightbox/default.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- Navigation
+    ==========================================-->
+<nav id="menu" class="navbar navbar-default navbar-fixed-top">
+  <div class="container"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">厦门鱼鲸信息科技有限公司</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand page-scroll" href="#page-top">鱼鲸科技</a> </div>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#features" class="page-scroll">鱼鲸愿景</a></li>
+        <li><a href="#about" class="page-scroll">关于我们</a></li>
+        <li><a href="#services" class="page-scroll">我们能做的</a></li>
+        <li><a href="#portfolio" class="page-scroll">产品图片</a></li>
+        <li><a href="#testimonials" class="page-scroll">合作的甲方</a></li>
+        <li><a href="#team" class="page-scroll">鱼鲸Tema</a></li>
+        <li><a href="#contact" class="page-scroll">联系我们</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+</nav>
+<!-- Header -->
+<header id="header">
+  <div class="intro">
+    <div class="overlay">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 intro-text">
+            <h1>用户始终是我们公司最好的产品经理.<span></span></h1>
+            <p>我们始终相信，最好的产品经理不是一个人，而是一群人，我们坚信用户比我们更了解他们的需求，而用户也一定可以成为我们最好的"产品经理"</p>
+            <a href="#features" class="btn btn-custom btn-lg page-scroll">了解我们</a></div>
         </div>
-        <div style="background-image:url(img/ickd.png);" class="col-xl-6 col-lg-5 col-md-4 intro-right"></div>
       </div>
     </div>
-    <!-- JavaScript files-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="js/front.js"></script>
-    <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  </body>
+  </div>
+</header>
+<!-- Features Section -->
+<div id="features" class="text-center">
+  <div class="container">
+    <div class="col-md-10 col-md-offset-1 section-title">
+      <h2>我们的愿景</h2>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-md-3"> <i class="fa fa-comments-o"></i>
+        <h3>更好的交流</h3>
+        <p>我们会根据甲方的需求，与甲方爸爸们进行更好的产品交流，致力于开发出完美的产品.</p>
+      </div>
+      <div class="col-xs-6 col-md-3"> <i class="fa fa-bullhorn"></i>
+        <h3>更好的品质</h3>
+        <p>我们提供更好的产品品质，优质的代码，强有力的团队，新鲜的血液.</p>
+      </div>
+      <div class="col-xs-6 col-md-3"> <i class="fa fa-group"></i>
+        <h3>更好的团队</h3>
+        <p>我们拥有充满年轻的团队，拥有更好的思维方式与处事能力.</p>
+      </div>
+      <div class="col-xs-6 col-md-3"> <i class="fa fa-magic"></i>
+        <h3>更好的内容</h3>
+        <p>我们提供最好的内容，优质的价格与别具一格的产品设计.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- About Section -->
+<div id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6"> <img src="img/imag_banner.png" class="img-responsive" alt=""> </div>
+      <div class="col-xs-12 col-md-6">
+        <div class="about-text">
+          <h2>关于我们的"鲸鱼"</h2>
+          <p>厦门鱼鲸信息科技有限公司是一支致力于为企业、商家和个人提供专业的小程序开发、APP开发、微信公众号运营、网站建设开发维护、软件开发维护等服务的年轻团队，
+		  我们拥有规范的开发设计流程和热情完善的售后服务；我们秉承务实、创新的理念，以客户至上为原则，
+		  坚持为每一位客户量身定制功能完善、界面友好、页面精美、视觉效果良好的网站、软件；凡是我司出产的产品，都一直坚持，品质第一、原创第一、服务第一.</p>
+          <h3>为什么选择我们？</h3>
+          <div class="list-style">
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+              <ul>
+                <li>优质的服务</li>
+                <li>优质的价格</li>
+                <li>优质的设计</li>
+                <li>优质的产品实现</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+              <ul>
+                <li>品质第一</li>
+                <li>原创第一</li>
+                <li>服务第一</li>
+                <li>产品第一</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Services Section -->
+<div id="services" class="text-center">
+  <div class="container">
+    <div class="section-title">
+      <h2>我们的业务范围</h2>
+      <p>直播&nbsp;·&nbsp;社交&nbsp;·&nbsp;电商&nbsp;·&nbsp;知识付费&nbsp;·&nbsp;短视频</p>
+    </div>
+    <div class="row">
+      <div class="col-md-4"> <i class="fa fa-weixin"></i>
+        <div class="service-desc">
+          <h3>小程序/公众号</h3>
+          <p>我们拥有多年的小程序开发经验，微信公众号运营经验.</p>
+        </div>
+      </div>
+      <div class="col-md-4"> <i class="fa fa-book"></i>
+        <div class="service-desc">
+          <h3>知识付费/社交</h3>
+          <p>我们参与过知识付费平台的建设/维护/与运营，拥有相对完善的知识付费资源.</p>
+        </div>
+      </div>
+      <div class="col-md-4"> <i class="fa fa-video-camera"></i>
+        <div class="service-desc">
+          <h3>短视频/制作</h3>
+          <p>承接小视频/抖音视频/微博视频/腾讯视频/视频制作.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4"> <i class="fa fa-life-buoy"></i>
+        <div class="service-desc">
+          <h3>直播平台建设/打车小程序</h3>
+          <p>我们拥有丰富的直播平台建设，直播小程序/直播APP的搭建，打车软件的建设小程序搭建.</p>
+        </div>
+      </div>
+      <div class="col-md-4"> <i class="fa fa-newspaper-o"></i>
+        <div class="service-desc">
+          <h3>网站建设/App建设</h3>
+          <p>我们根据用户需求，建设优质的网站和符合用户的APP产品.</p>
+        </div>
+      </div>
+      <div class="col-md-4"> <i class="fa fa-shopping-cart"></i>
+        <div class="service-desc">
+          <h3>电商平台/小程序</h3>
+          <p>实现电商平台与小程序的搭建，支付，与购物车订单，完成一整套电商流程.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Gallery Section -->
+<div id="portfolio" class="text-center">
+  <div class="container">
+    <div class="section-title">
+      <h2>我们的产品案例</h2>
+      <p>全心全意为用户打造更好的服务，打造更好的产品与平台.</p>
+    </div>
+    <div class="row">
+      <div class="portfolio-items">
+        <div class="col-sm-6 col-md-4 col-lg-4">
+          <div class="portfolio-item">
+            <div class="hover-bg"> <a href="img/portfolio/fishpond.png" title="鱼圈在线" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4>鱼圈APP</h4>
+              </div>
+              <img src="img/portfolio/fishpond_small.png" class="img-responsive" alt="鱼圈在线"> </a> </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-4">
+          <div class="portfolio-item">
+            <div class="hover-bg"> <a href="img/portfolio/zcym.png" title="注册页面" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4>注册页面</h4>
+              </div>
+              <img src="img/portfolio/zcym_small.png" class="img-responsive" alt="注册APP"> </a> </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-4">
+          <div class="portfolio-item">
+            <div class="hover-bg"> <a href="img/portfolio/dashuju.png" title="大数据平台" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4>湖南省大数据平台</h4>
+              </div>
+              <img src="img/portfolio/dashuju_small.png" class="img-responsive" alt="大数据平台"> </a> </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-4">
+          <div class="portfolio-item">
+            <div class="hover-bg"> <a href="img/portfolio/yuquan.png" title="鱼圈APP" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4>鱼圈</h4>
+              </div>
+              <img src="img/portfolio/yuquan_small.png" class="img-responsive" alt="鱼圈APP"> </a> </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-4">
+          <div class="portfolio-item">
+            <div class="hover-bg"> <a href="img/portfolio/muban.png" title="模板" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4>企业模板</h4>
+              </div>
+              <img src="img/portfolio/muban_small.png" class="img-responsive" alt="模板"> </a> </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-4">
+          <div class="portfolio-item">
+            <div class="hover-bg"> <a href="img/portfolio/oldwhale.png" title="古鲸科技" data-lightbox-gallery="gallery1">
+              <div class="hover-text">
+                <h4>厦门古鲸科技工作室</h4>
+              </div>
+              <img src="img/portfolio/oldwhale_small.png" class="img-responsive" alt="古鲸科技"> </a> </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Testimonials Section -->
+<div id="testimonials">
+  <div class="container">
+    <div class="section-title text-center">
+      <h2>甲方"爸爸"的话</h2>
+	  <p>点击可查看产品网站</p>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="testimonial">
+          <div class="testimonial-image"> <img src="img/testimonials/yuquan.png" alt="鱼圈APP"> </div>
+          <div class="testimonial-content">
+            <p>"鲸鱼能懂我们需要什么，这是我们很需要的."</p>
+            <div class="testimonial-meta"> -<a href="http://www.fishpond.fun/" target="_blank" title="产品">鱼圈在线</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testimonial">
+          <div class="testimonial-image"> <img src="img/testimonials/logo1.png" alt="大数据平台"> </div>
+          <div class="testimonial-content">
+            <p>"他们的服务很好，品质也很优质，让我们很轻松."</p>
+            <div class="testimonial-meta"> - <a href="jquerydsjmoban/index.html" target="_blank" title="产品">大数据平台</a> </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="testimonial">
+          <div class="testimonial-image"> <img src="img/testimonials/logo2.png" alt="招聘网"> </div>
+          <div class="testimonial-content">
+            <p>"我们很信赖他们，能给我们提供很好的素材."</p>
+            <div class="testimonial-meta"> -<a href="zpWeb/index.html" target="_blank" title="产品">企业模板</a> </div>
+          </div>
+        </div>
+      </div>
+      <div class="row"> </div>
+
+    </div>
+  </div>
+</div>
+<!-- Team Section -->
+<div id="team" class="text-center">
+  <div class="container">
+    <div class="col-md-8 col-md-offset-2 section-title">
+      <h2>我们的团队</h2>
+      <p>我们将用最诚意的心♥，来为您解决问题.</p>
+    </div>
+    <div id="row">
+      <div class="col-md-3 col-sm-6 team">
+        <div class="thumbnail"> <img src="img/team/zlb.png" alt="Aaron" class="team-img">
+          <div class="caption">
+            <h4>Aaron 张</h4>
+            <p>设计/运营</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 team">
+        <div class="thumbnail"> <img src="img/team/lyy.png" alt="天昨天明" class="team-img">
+          <div class="caption">
+            <h4>Tianming 赖</h4>
+            <p>技术/前端/后端</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 team">
+        <div class="thumbnail"> <img src="img/team/cs.png" alt="厨师" class="team-img">
+          <div class="caption">
+            <h4>Cook 林</h4>
+            <p>数据/运营</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 team">
+        <div class="thumbnail"> <img src="img/team/lm.png" alt="龙爷" class="team-img">
+          <div class="caption">
+            <h4>Dragon 苏</h4>
+            <p>技术/前端</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Contact Section -->
+<div id="contact">
+  <div class="container">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="section-title">
+          <h2>联系我们</h2>
+          <p>如果我们的内容侵犯了您的权益，请您在第一时间联系我们！联系方式右下角可见.</p>
+        </div>
+       <div >
+		   <img src="img/WechatQR.jpg" style="width: 200px; height: 200px;" >
+	   </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-md-offset-1 contact-info">
+      <div class="contact-item">
+        <h3>联系方式：</h3>
+        <p><span><i class="fa fa-map-marker"></i> 地址</span>厦门市集美区杏林湾运营中心1号楼<br>
+         阿里云创新中心 </p>
+      </div>
+      <div class="contact-item">
+        <p><span><i class="fa fa-phone"></i> 电话</span>0755 3633 6581</p>
+      </div>
+      <div class="contact-item">
+        <p><span><i class="fa fa-envelope-o"></i> 邮箱（Email）</span>aaronzhang@yujingkeji.top</p>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="row">
+        <div class="social">
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer Section -->
+<div id="footer">
+  <div class="container text-center">
+    <p>&copy; 2019 网站归属 <a href="https://www.yujingkeji.top/" target="_blank" title="鱼鲸科技">厦门鱼鲸科技</a> - Collect from <a href="http://www.fishpond.fun/" title="鱼圈APP" target="_blank">鱼圈在线</a> - 安全备案<a href="http://icp.chinaz.com/?s=yujingkeji.top&sc=1" title="备案" target="_blank">闽ICP备19021970号-1</a></p>
+  </div>
+</div>
+<script type="text/javascript" src="js/jquery.1.11.1.js"></script> 
+<script type="text/javascript" src="js/bootstrap.js"></script> 
+<script type="text/javascript" src="js/SmoothScroll.js"></script> 
+<script type="text/javascript" src="js/nivo-lightbox.js"></script> 
+<script type="text/javascript" src="js/jqBootstrapValidation.js"></script> 
+<script type="text/javascript" src="js/contact_me.js"></script> 
+<script type="text/javascript" src="js/main.js"></script>
+</body>
 </html>
