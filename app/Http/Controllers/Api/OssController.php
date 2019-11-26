@@ -48,6 +48,6 @@ class OssController extends BaseController
             return $this->responseFailed();
         }
         
-        return $this->responseSuccess();
+        return response()->json(['Status' => 'Ok']);
     }
 }
