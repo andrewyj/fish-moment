@@ -14,4 +14,5 @@ Route::group([
     $router->resource('user', 'UserController');
     $router->resource('school', 'SchoolController');
     $router->resource('post', 'PostController');
+    $router->resource('article', 'ArticleController');
 });

@@ -26,3 +26,5 @@ Route::get('/yinsi', function () {
 Route::get('/map', function () {
     return view('static.map.index');
 });
+Route::get('article/{article}', 'ArticleController@show')->name('article.show');
+
