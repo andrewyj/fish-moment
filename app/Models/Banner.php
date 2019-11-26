@@ -28,4 +28,11 @@ class Banner extends Model
             self::CODE_ACTIVITY => '活动',
         ];
     }
+    
+    public static function linkTypeMaps() {
+        return [
+            self::LINK_TYPE_INNER   => '内链接',
+            self::LINK_TYPE_OUTSIDE => '外链接',
+        ];
+    }
 }

@@ -15,4 +15,5 @@ Route::group([
     $router->resource('school', 'SchoolController');
     $router->resource('post', 'PostController');
     $router->resource('article', 'ArticleController');
+    $router->resource('banner', 'BannerController');
 });
