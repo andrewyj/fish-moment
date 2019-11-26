@@ -100,6 +100,76 @@
                 ]
             }
         },
+        "/oss/signature": {
+            "post": {
+                "tags": [
+                    "oss"
+                ],
+                "summary": "\u83b7\u53d6\u7b7e\u540d\u4fe1\u606f",
+                "description": "\u83b7\u53d6\u7b7e\u540d\u4fe1\u606f",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "\u7ed3\u679c\u96c6",
+                        "schema": {
+                            "properties": {
+                                "code": {
+                                    "description": "\u72b6\u6001\u7801",
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "description": "\u72b6\u6001\u4fe1\u606f",
+                                    "type": "string"
+                                },
+                                "data": {
+                                    "properties": {
+                                        "accessid": {
+                                            "description": "oss key",
+                                            "type": "integer"
+                                        },
+                                        "host": {
+                                            "description": "oss host",
+                                            "type": "string"
+                                        },
+                                        "policy": {
+                                            "description": "policy",
+                                            "type": "string"
+                                        },
+                                        "signature": {
+                                            "description": "\u7b7e\u540d\u4fe1\u606f",
+                                            "type": "string"
+                                        },
+                                        "expire": {
+                                            "description": "\u8fc7\u671f\u65f6\u95f4",
+                                            "type": "string"
+                                        },
+                                        "callback": {
+                                            "description": "\u56de\u8c03\u4fe1\u606f",
+                                            "type": "string"
+                                        },
+                                        "dir": {
+                                            "description": "\u8def\u5f84\u524d\u7f00 \u8fd9\u4e2a\u53c2\u6570\u662f\u8bbe\u7f6e\u7528\u6237\u4e0a\u4f20\u6587\u4ef6\u65f6\u6307\u5b9a\u7684\u524d\u7f00\u3002",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": [
+                            "scope"
+                        ]
+                    }
+                ]
+            }
+        },
         "/post-comment": {
             "post": {
                 "tags": [

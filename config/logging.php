@@ -37,6 +37,7 @@ return [
         'alpha'   => storage_path('logs/alpha.log'),
         'moneris' => storage_path('logs/moneris.log'),
         'wechat'  => storage_path('logs/wechat.log'),
+        'oss'     => storage_path('logs/oss.log'),
     ],
     
     'channels' => [

@@ -66,6 +66,10 @@ Route::group(["prefix" => "v1"], function () {
     //post-comment
     Route::get('/post-comment/{post}', 'PostCommentController@postComments');
     
+    //oss
+    Route::post('/oss/signature', 'OssController@signature');
+    Route::post('/oss/callback', 'OssController@callback')->name('oss.callback');
+    
 });
 
 
