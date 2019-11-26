@@ -70,6 +70,9 @@ Route::group(["prefix" => "v1"], function () {
     Route::post('/oss/signature', 'OssController@signature');
     Route::post('/oss/callback', 'OssController@callback')->name('oss.callback');
     
+    //weixin
+    Route::post('/weixin/photo/check', 'WeixinController@photoCheck');
+    
 });
 
 
