@@ -464,6 +464,23 @@
                                             "updated_at": {
                                                 "description": "\u66f4\u65b0\u65f6\u95f4",
                                                 "type": "string"
+                                            },
+                                            "user": {
+                                                "properties": {
+                                                    "avatar": {
+                                                        "description": "\u7528\u6237\u5934\u50cf",
+                                                        "type": "string"
+                                                    },
+                                                    "nickname": {
+                                                        "description": "\u7528\u6237\u6635\u79f0",
+                                                        "type": "string"
+                                                    },
+                                                    "is_following": {
+                                                        "description": "\u662f\u5426\u5173\u6ce8",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
                                             }
                                         },
                                         "type": "object"

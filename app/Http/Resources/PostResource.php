@@ -26,8 +26,17 @@ class PostResource extends JsonResource
             'dislike_count' => $this->dislike_count,
             'comment_count' => $this->comment_count,
             'content'       => $this->content,
-            'created_at'    => $this->created_at,
-            'updated_at'    => $this->updated_at,
+            'school_name'   => $this->school->name ?? '',
+            'user'          => [
+                'avatar'       => $this->user->avatar,
+                'nickname'     => $this->user->nickname,
+                'is_following' => $request->user()->followings()->where([
+                    ['follower_id', '=', $request->user()->id],
+                    ['user_id', '=', $this->user_id],
+                ])->exists(),
+            ],
+            'created_at'    => (string)$this->created_at,
+            'updated_at'    => (string)$this->updated_at,
         ];
     }
 }
