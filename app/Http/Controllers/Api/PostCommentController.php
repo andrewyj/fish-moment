@@ -141,7 +141,9 @@ class PostCommentController extends BaseController
      * )
      */
     public function postComments(Post $post) {
-        $allComments = PostComment::where('post_id', $post->id)->get();
+        $allComments = PostComment::where('post_id', $post->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
         
         return $this->responseData(PostCommentService::getCommentTree($allComments));
     }

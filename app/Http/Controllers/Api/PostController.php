@@ -129,7 +129,7 @@ class PostController extends BaseController
      */
     public function posts() {
         $schoolId = request()->get('school_id', '');
-        $posts = Post::where('verify_status', Post::VERIFY_STATUS_PASS);
+        $posts = Post::where('verify_status', Post::VERIFY_STATUS_PASS)->orderBy('created_at', 'desc');
         if ($schoolId !== '' && is_integer($schoolId)) {
             $posts->where('school_id', $schoolId);
         }
@@ -190,7 +190,9 @@ class PostController extends BaseController
      */
     public function followingPosts() {
         $userIds = request()->user()->followings->keyBy('id')->keys();
-        $posts = Post::where('verify_status', Post::VERIFY_STATUS_PASS)->whereIn('user_id', $userIds);
+        $posts = Post::where('verify_status', Post::VERIFY_STATUS_PASS)
+            ->whereIn('user_id', $userIds)
+            ->orderBy('created_at', 'desc');
         
         return new PostCollection($posts->paginate());
     }
@@ -310,9 +312,9 @@ class PostController extends BaseController
         $posts = Post::where([
             ['user_id', '=', request()->user()->id],
             ['status', '=', $status],
-        ])->get();
+        ])->orderBy('created_at', 'desc');
         
-        return new PostCollection($posts);
+        return new PostCollection($posts->paginate());
     }
     
     /**

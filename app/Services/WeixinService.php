@@ -81,7 +81,7 @@ class WeixinService
             $result = json_decode($response->getBody());
             if (!isset($result->access_token)) {
                 logPlus('wechat access token fetch error', ['errorMessage' => $result], 'wechat');
-                $this->errorMessage = '参数错误，未获取到用户信息';
+                $this->errorMessage = 'access token 获取失败';
             
                 return false;
             }
