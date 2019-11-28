@@ -30,10 +30,10 @@ class PostResource extends JsonResource
             'user'          => [
                 'avatar'       => $this->user->avatar,
                 'nickname'     => $this->user->nickname,
-                'is_following' => $request->user()->followings()->where([
+                'is_following' => $request->user() ? $request->user()->followings()->where([
                     ['follower_id', '=', $request->user()->id],
                     ['user_id', '=', $this->user_id],
-                ])->exists(),
+                ])->exists() : false,
             ],
             'created_at'    => (string)$this->created_at,
             'updated_at'    => (string)$this->updated_at,
