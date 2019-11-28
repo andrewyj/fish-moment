@@ -59,8 +59,13 @@ class WeixinService
         logPlus('photo check data', ['output' => $output], 'wechat');
         curl_close($ch);
     
-        if (isset($output->errcode) && $output->errcode == 0) {
-            return true;
+        if (isset($output->errcode)) {
+            if($output->errcode == 0) {
+                return true;
+            }elseif ($output->errcode == 40001) {
+                $this->refreshToken();
+                return $this->photoCheck($photo);
+            }
         }
         
         return false;
@@ -77,20 +82,22 @@ class WeixinService
         curl_setopt($curl, CURLOPT_POSTFIELDS,json_encode(['content' => $content]));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
         $output = json_decode(curl_exec($curl));
+        logPlus('content check data', ['output' => $output], 'wechat');
         curl_close($curl);
         
-        if (isset($output->errcode) && $output->errcode == 0) {
-            return true;
+        if (isset($output->errcode)) {
+            if($output->errcode == 0) {
+                return true;
+            }elseif ($output->errcode == 40001) {
+                $this->refreshToken();
+                return $this->contentCheck($content);
+            }
         }
         
         return false;
     }
     
-    public function getToken() {
-        $accessToken = Cache::get(self::ACCESS_TOKEN_CACHE_NAME);
-        if ($accessToken) {
-            return $accessToken;
-        }
+    public function refreshToken() {
         $options = ['query' => [
             'appid'      => $this->key,
             'secret'     => $this->secret,
@@ -106,7 +113,7 @@ class WeixinService
                 return false;
             }
             $accessToken = $result->access_token;
-            Cache::put(self::ACCESS_TOKEN_CACHE_NAME, $accessToken, $result->expires_in);
+            Cache::put(self::ACCESS_TOKEN_CACHE_NAME, $accessToken, $result->expires_in - 60);
         
             return $accessToken;
         }
@@ -117,5 +124,13 @@ class WeixinService
     
     public function getErrorMessage() {
         return $this->errorMessage;
+    }
+    
+    private function getToken() {
+        $accessToken = Cache::get(self::ACCESS_TOKEN_CACHE_NAME);
+        if ($accessToken) {
+            return $accessToken;
+        }
+        return $this->refreshToken();
     }
 }
