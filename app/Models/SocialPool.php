@@ -9,6 +9,8 @@ class SocialPool extends Model
 {
     use SoftDeletes;
     
+    protected $guarded = ['id'];
+    
     public function users() {
         return $this->belongsToMany(User::class, UserSocialPool::class);
     }

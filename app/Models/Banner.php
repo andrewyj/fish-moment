@@ -18,6 +18,8 @@ class Banner extends Model
     //code
     const CODE_ACTIVITY = 'activity';
     
+    protected $guarded = ['id'];
+    
     public function scopeAvailable($query)
     {
         return $query->where('disabled', self::DISABLED_NO);

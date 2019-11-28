@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class UserFollower extends Model
 {
     public $timestamps = false;
-    protected $guarded = ['deleted_at'];
+    
+    protected $guarded = ['id'];
 }
