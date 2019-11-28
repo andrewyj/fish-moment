@@ -43,4 +43,49 @@ class WeixinController extends BaseController
             'verify_status' => $service->photoCheck(request()->file('photo')),
         ]);
     }
+    
+    /**
+     * @SWG\Post(
+     *     path="/weixin/content/check",
+     *     summary="文字检测",
+     *     tags={"weixin"},
+     *     description="文字检测，不超过500k",
+     *     security={{"api_key": {"scope"}}},
+     *     consumes={"application/json"},
+     *     produces={"application/json"},
+     *     @SWG\Parameter(
+     *          in="body",
+     *          name="body",
+     *          description="data",
+     *          required=true,
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="content",
+     *                  type="string",
+     *                  description="检测内容",
+     *              ),
+     *          ),
+     *      ),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="返回结果",
+     *         @SWG\Schema(
+     *             type="object",
+     *             @SWG\Property(property="code", type="integer", description="状态码"),
+     *             @SWG\Property(property="message", type="string", description="状态信息"),
+     *             @SWG\Property(property="data", type="object",
+     *                  @SWG\Property(property="verify_status", type="boolean", description="验证状态 1：验证通过 0：验证失败"),
+     *             ),
+     *         )
+     *     )
+     * )
+     */
+    public function contentCheck() {
+        $service = new WeixinService();
+        
+        return $this->responseData([
+            'verify_status' => $service->contentCheck(request()->post('content'))
+        ]);
+    }
 }

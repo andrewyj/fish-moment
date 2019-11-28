@@ -72,6 +72,7 @@ Route::group(["prefix" => "v1"], function () {
     
     //weixin
     Route::post('/weixin/photo/check', 'WeixinController@photoCheck');
+    Route::post('/weixin/content/check', 'WeixinController@contentCheck');
     
 });
 

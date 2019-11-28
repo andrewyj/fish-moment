@@ -66,6 +66,26 @@ class WeixinService
         return false;
     }
     
+    public function contentCheck($content) {
+        $url = "https://api.weixin.qq.com/wxa/msg_sec_check?access_token={$this->getToken()}";
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
+    
+        curl_setopt($curl, CURLOPT_POST, TRUE);
+        curl_setopt($curl, CURLOPT_POSTFIELDS,json_encode(['content' => $content]));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+        $output = json_decode(curl_exec($curl));
+        curl_close($curl);
+        
+        if (isset($output->errcode) && $output->errcode == 0) {
+            return true;
+        }
+        
+        return false;
+    }
+    
     public function getToken() {
         $accessToken = Cache::get(self::ACCESS_TOKEN_CACHE_NAME);
         if ($accessToken) {
