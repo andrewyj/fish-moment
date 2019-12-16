@@ -13,6 +13,7 @@
         "darkaonline/l5-swagger": "5.8.*",
         "encore/laravel-admin": "^1.7",
         "fideloper/proxy": "^4.0",
+        "laravel-admin-ext/media-player": "^1.1",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "socialiteproviders/weixin": "^4.0",
@@ -67,5 +68,11 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer/"
+        }
     }
 }

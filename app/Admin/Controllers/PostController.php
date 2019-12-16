@@ -56,10 +56,12 @@ class PostController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(Post::findOrFail($id));
+        $model = Post::findOrFail($id);
+        $show = new Show($model);
 
-        $show->field('id', __('Id'));
-        $show->field('user_id', '作者');
+        $show->user('作者')->as(function ($user){
+            return $user->nickname;
+        });
         $show->field('school_id', '所属学校');
         $show->field('content','发布内容');
         $show->field('resource_type', '资源类型');
@@ -68,6 +70,11 @@ class PostController extends AdminController
         $show->field('dislike_count', '不喜欢次数');
         $show->field('comment_count', '评论次数');
         $show->field('verify_status', '审核状态');
+        if ($model->resource_type == Post::RESOURCE_TYPE_VIDEO) {
+            $show->field('resource_urls', '视频')->video(['videoWidth' => 720, 'videoHeight' => 480]);
+        } else {
+            $show->field('resource_urls', '图片')->carousel();
+        }
         $show->field('created_at', '创建时间');
         $show->field('updated_at', '更新时间');
 
