@@ -56,6 +56,7 @@ class PostCommentController extends BaseController
     public function store(CommentStore $request) {
         $validated = $request->validated();
         $validated['user_id'] = $request->user()->id;
+        $validated['content'] = str_replace(config('filter-keywords'), '*', $validated['content']);
         PostComment::create($validated);
         
         return $this->responseSuccess();

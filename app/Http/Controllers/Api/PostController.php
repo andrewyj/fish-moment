@@ -60,6 +60,7 @@ class PostController extends BaseController
         $validated = $request->validated();
         $validated['user_id']   = $user->id;
         $validated['school_id'] = $user->verify_status == User::VERIFY_STATUS_PASS ? $user->school_id : 0;
+        $validated['content'] = str_replace(config('filter-keywords'), '*', $validated['content']);
         Post::create($validated);
         
         return $this->responseSuccess('创建成功！审核通过后可进行查看');
