@@ -57,6 +57,7 @@ class PostCommentController extends BaseController
         $validated = $request->validated();
         $validated['user_id'] = $request->user()->id;
         $validated['content'] = str_replace(config('filter-keywords'), '*', $validated['content']);
+        Post::find($validated['post_id'])->increment('comment_count');
         PostComment::create($validated);
         
         return $this->responseSuccess();
@@ -93,6 +94,7 @@ class PostCommentController extends BaseController
         if ($postComment->user_id != request()->user()->id) {
             return $this->responseFailed('只能删除自己发布的评论');
         }
+        Post::find($postComment->post_id)->decrement('comment_count');
         $postComment->delete();
         
         return $this->responseSuccess();

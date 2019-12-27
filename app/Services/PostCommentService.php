@@ -19,6 +19,8 @@ class PostCommentService
             ->map(function ($comment) use ($allComments) {
                 $data = [
                     'id'             => $comment->id,
+                    'user_id'        => $comment->user_id,
+                    'user_avatar'    => $comment->user->avatar,
                     'nickname'       => $comment->user->nickname,
                     'content'        => $comment->content,
                     'like_count'     => $comment->like_count,
